@@ -23,7 +23,7 @@ class Layout extends React.Component {
           />
         </Helmet>
         <GlobalStyles />
-        <main>{children}</main>
+        {children}
       </React.Fragment>
     )
   }
