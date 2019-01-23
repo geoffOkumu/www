@@ -7,6 +7,7 @@ import TimelineLite from 'gsap/TimelineLite'
 import { containerStyles } from '../widgets/Container'
 import Logo from '../svg/Logo'
 import MenuIcon from '../widgets/MenuIcon'
+import { colors } from '../styles/theme'
 
 const HeaderContainer = styled.section`
   ${containerStyles}
@@ -14,6 +15,14 @@ const HeaderContainer = styled.section`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border-bottom: 2px solid ${colors.grey};
+`
+
+const Wrapper = styled.header`
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: #fff;
 `
 
 class Header extends React.Component {
@@ -32,12 +41,13 @@ class Header extends React.Component {
   componentDidMount() {
     this.menuAnimation
       .to(this.menuElement, 0.2, {
-        height: '80vh',
-        border: '8px solid #f9cf00',
+        height: '400px',
+        borderBottom: '8px solid #f9cf00',
       })
       .to(this.appBarElement, 0.2, {
         boxShadow:
           '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)',
+        borderBottomColor: 'transparent',
       })
   }
 
@@ -54,7 +64,7 @@ class Header extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <header ref={header => (this.menuElement = header)}>
+        <Wrapper ref={header => (this.menuElement = header)}>
           <HeaderContainer ref={section => (this.appBarElement = section)}>
             <div>
               <Link to="/">
@@ -65,7 +75,7 @@ class Header extends React.Component {
               <MenuIcon active={this.state.menuOpen} />
             </div>
           </HeaderContainer>
-        </header>
+        </Wrapper>
       </React.Fragment>
     )
   }

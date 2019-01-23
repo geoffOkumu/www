@@ -9,8 +9,9 @@ export const colors = {
 }
 
 export const font = {
-  sans: "'Open Sans', 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif'",
-  serif: "'Playfair Display', 'Georgia', 'serif'",
+  sans: "'Montserrat', 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif'",
+  serif: "'Merriweather', 'Georgia', 'serif'",
+  display: "'Playfair Display', serif",
   mono: "'Roboto Mono', Monaco, monospace !default",
 }
 

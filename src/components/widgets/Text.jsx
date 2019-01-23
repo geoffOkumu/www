@@ -19,3 +19,4 @@ Text.span = styled.span`
   ${defaultStyles}
   ${props => props.customStyles}
 `
+export default Text
