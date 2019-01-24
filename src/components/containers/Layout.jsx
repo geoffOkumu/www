@@ -1,8 +1,9 @@
 import React from 'react'
-import { createGlobalStyle } from 'styled-components'
+import { createGlobalStyle, ThemeProvider } from 'styled-components'
 import Helmet from 'react-helmet'
 
 import normalize from '../styles/normalize'
+import theme from '../styles/theme'
 
 const GlobalStyles = createGlobalStyle`
   ${normalize}
@@ -23,7 +24,9 @@ class Layout extends React.Component {
           />
         </Helmet>
         <GlobalStyles />
-        {children}
+        <ThemeProvider theme={theme}>
+          <>{children}</>
+        </ThemeProvider>
       </React.Fragment>
     )
   }

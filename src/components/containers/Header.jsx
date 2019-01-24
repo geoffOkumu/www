@@ -8,6 +8,7 @@ import { containerStyles } from '../widgets/Container'
 import Logo from '../svg/Logo'
 import MenuIcon from '../widgets/MenuIcon'
 import { colors } from '../styles/theme'
+import Menu from './Menu'
 
 const HeaderContainer = styled.section`
   ${containerStyles}
@@ -15,7 +16,7 @@ const HeaderContainer = styled.section`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 2px solid ${colors.grey};
+  border-bottom: 2px solid ${props => props.theme.colors.grey};
 `
 
 const Wrapper = styled.header`
@@ -23,6 +24,7 @@ const Wrapper = styled.header`
   top: 0;
   width: 100%;
   background-color: #fff;
+  height: 100px;
 `
 
 class Header extends React.Component {
@@ -39,16 +41,10 @@ class Header extends React.Component {
   handleClick = () => this.setState({ menuOpen: !this.state.menuOpen })
 
   componentDidMount() {
-    this.menuAnimation
-      .to(this.menuElement, 0.2, {
-        height: '400px',
-        borderBottom: '8px solid #f9cf00',
-      })
-      .to(this.appBarElement, 0.2, {
-        boxShadow:
-          '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)',
-        borderBottomColor: 'transparent',
-      })
+    this.menuAnimation.to(this.menuElement, 0.2, {
+      height: '400px',
+      borderBottom: `8px solid ${colors.secondary}`,
+    })
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -75,6 +71,7 @@ class Header extends React.Component {
               <MenuIcon active={this.state.menuOpen} />
             </div>
           </HeaderContainer>
+          {this.state.menuOpen && <Menu />}
         </Wrapper>
       </React.Fragment>
     )

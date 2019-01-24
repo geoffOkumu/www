@@ -3,13 +3,11 @@ import styled, { css } from 'styled-components'
 
 import Heading from '../widgets/Heading'
 import Text from '../widgets/Text'
-import { font } from '../styles/theme'
 import { containerStyles } from '../widgets/Container'
 import { media } from '../styles/utils'
-import { colors } from '../styles/theme'
 
 const Wrapper = styled.section`
-  background-color: ${colors.grey};
+  background-color: ${props => props.theme.colors.grey};
   padding-top: 200px;
   padding-bottom: 100px;
 
@@ -27,16 +25,16 @@ const custom = {
     text-align: center;
     margin-bottom: 0.5rem;
 
-    ${media.phone`font-size: 1.8rem !important;`}
+    ${media.phone`font-size: 1.6rem !important;`}
   `,
   span: css`
     text-align: center;
-    font-family: ${font.display};
+    font-family: ${props => props.theme.font.display};
     font-style: oblique;
     font-size: 2.4rem;
     display: block;
 
-    ${media.phone`font-size: 1.6rem !important;`}
+    ${media.phone`font-size: 1.2rem !important;`}
   `,
 }
 
