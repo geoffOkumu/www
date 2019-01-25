@@ -3,9 +3,11 @@ export const colors = {
   black: '#000',
   primary: '#5da8f3',
   secondary: '#f9cf00',
-  alt: '#a4cdf6',
-  cyan: '#2fcce1',
+  tertiary: '#f19f4d',
+  blue: '#4484ce',
   grey: '#f4f4f4',
+  textDark: '#1e1e1e',
+  textLight: '#acbcc2',
 }
 
 export const font = {

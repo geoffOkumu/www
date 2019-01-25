@@ -8,7 +8,8 @@ import { containerStyles } from '../widgets/Container'
 import Logo from '../svg/Logo'
 import MenuIcon from '../widgets/MenuIcon'
 import { colors } from '../styles/theme'
-import Menu from './Menu'
+import { media } from '../styles/utils'
+import { DesktopLinks, Menu } from './Menu'
 
 const HeaderContainer = styled.section`
   ${containerStyles}
@@ -16,7 +17,7 @@ const HeaderContainer = styled.section`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 2px solid ${props => props.theme.colors.grey};
+  border-bottom: 2px solid ${({ theme }) => theme.colors.grey};
 `
 
 const Wrapper = styled.header`
@@ -25,6 +26,15 @@ const Wrapper = styled.header`
   width: 100%;
   background-color: #fff;
   height: 100px;
+
+  ${media.phone`position: relative;`}
+`
+
+const MenuButton = styled.div`
+  position: relative;
+  display: none;
+
+  ${media.tablet`display: block;`}
 `
 
 class Header extends React.Component {
@@ -67,8 +77,11 @@ class Header extends React.Component {
                 <Logo width={60} />
               </Link>
             </div>
-            <div style={{ position: 'relative' }} onClick={this.handleClick}>
-              <MenuIcon active={this.state.menuOpen} />
+            <div>
+              <DesktopLinks />
+              <MenuButton onClick={this.handleClick}>
+                <MenuIcon active={this.state.menuOpen} />
+              </MenuButton>
             </div>
           </HeaderContainer>
           {this.state.menuOpen && <Menu />}

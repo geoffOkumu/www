@@ -7,11 +7,14 @@ import { containerStyles } from '../widgets/Container'
 import { media } from '../styles/utils'
 
 const Wrapper = styled.section`
-  background-color: ${props => props.theme.colors.grey};
-  padding-top: 200px;
+  background-color: ${({ theme }) => theme.colors.white};
+  padding-top: 180px;
   padding-bottom: 100px;
 
-  ${media.phone`padding-top: 180px;`}
+  ${media.phone`
+    padding-top: 60px;
+    padding-bottom: 60px;
+  `}
 `
 
 const CopyContainer = styled.div`
@@ -22,14 +25,12 @@ const CopyContainer = styled.div`
 const custom = {
   heading: css`
     font-size: 3.5rem !important;
-    text-align: center;
     margin-bottom: 0.5rem;
 
     ${media.phone`font-size: 1.6rem !important;`}
   `,
   span: css`
-    text-align: center;
-    font-family: ${props => props.theme.font.display};
+    font-family: ${({ theme }) => theme.font.display};
     font-style: oblique;
     font-size: 2.4rem;
     display: block;
