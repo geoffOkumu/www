@@ -13,9 +13,6 @@ const Container = styled.div`
   ${containerStyles}
   ${props => props.maxWidth}
   ${props => props.customStyles}
-  ${media.tablet`
-    padding-left: 0;
-    padding-right: 0;`}
 `
 
 Container.propTypes = {

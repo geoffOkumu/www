@@ -17,7 +17,13 @@ export const font = {
   mono: "'Roboto Mono', Monaco, monospace !default",
 }
 
+export const radius = '4px'
+
+export const transition = `${3 / 16}s cubic-bezier(0.375, 0, 0.675, 1)`
+
 export default {
   font,
   colors,
+  radius,
+  transition,
 }
