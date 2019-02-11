@@ -11,7 +11,8 @@ export const containerStyles = css`
 `
 const Container = styled.div`
   ${containerStyles}
-  ${props => props.maxWidth}
+  max-width: ${props => props.maxWidth}px;
+
   ${props => props.customStyles}
 `
 
@@ -20,7 +21,7 @@ Container.propTypes = {
 }
 
 Container.defaultProps = {
-  maxWidth: 720,
+  maxWidth: 1344,
 }
 
 export default Container

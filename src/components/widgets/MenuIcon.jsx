@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 const Hamburger = styled.div`
-  width: 50px;
+  width: 40px;
   height: 4px;
   background: ${props => (props.active ? 'transparent' : '#333')};
   position: absolute;
@@ -16,25 +16,25 @@ const Hamburger = styled.div`
     content: '';
     position: absolute;
     height: 4px;
-    width: 50px;
+    width: 40px;
     background: #333;
     transition: 0.4s;
   }
 
   &::before {
-    top: ${props => (props.active ? '0' : '-16px')};
+    top: ${props => (props.active ? '0' : '-12px')};
     transform: ${props => (props.active ? 'rotate(-135deg)' : 'none')};
   }
 
   &::after {
-    top: ${props => (props.active ? '0' : '16px')};
+    top: ${props => (props.active ? '0' : '12px')};
     transform: ${props => (props.active ? 'rotate(-45deg)' : 'none')};
   }
 `
 
 const IconWrapper = styled.div`
-  width: 60px;
-  height: 60px;
+  width: 50px;
+  height: 50px;
   cursor: pointer;
 `
 

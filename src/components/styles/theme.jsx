@@ -8,6 +8,8 @@ export const colors = {
   grey: '#f4f4f4',
   textDark: '#1e1e1e',
   textLight: '#acbcc2',
+  headerBg: 'rgba(255,255,255,0.975)',
+  bodyBg: '#f2f2f2',
 }
 
 export const font = {

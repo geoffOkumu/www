@@ -7,20 +7,22 @@ const LinkWrapper = styled.div`
   padding: 1rem 0;
   text-transform: uppercase;
   font-size: 1.2rem;
+  line-height: 1;
   margin-left: 2rem;
 
   a {
     text-decoration: none;
-    color: ${({ theme }) => theme.colors.black};
+    color: ${({ theme, active }) =>
+      active ? theme.colors.primary : theme.colors.black};
 
     &:hover {
       color: ${({ theme }) => theme.colors.blue};
     }
   }
 `
-const MenuLink = ({ title, to }) => {
+const MenuLink = ({ title, to, active }) => {
   return (
-    <LinkWrapper>
+    <LinkWrapper active={active}>
       <Link to={to}>{title}</Link>
     </LinkWrapper>
   )
@@ -29,6 +31,7 @@ const MenuLink = ({ title, to }) => {
 MenuLink.propTypes = {
   title: PropTypes.string.isRequired,
   to: PropTypes.string.isRequired,
+  active: PropTypes.bool.isRequired,
 }
 
 export default MenuLink

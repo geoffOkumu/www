@@ -1,8 +1,10 @@
 import styled, { css } from 'styled-components'
+import { font } from './theme'
 
 const normalize = css`
   html {
-    font-family: $sans-serif; /* 1 */
+    font-family: ${font.serif}; /* 1 */
+    font-size: 16px;
     -ms-text-size-adjust: 100%; /* 2 */
     -webkit-text-size-adjust: 100%; /* 2 */
   }

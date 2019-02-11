@@ -4,10 +4,10 @@ import Search from '../components/containers/Search'
 import Layout from '../components/containers/Layout'
 import Header from '../components/containers/Header'
 
-const SearchPage = () => {
+const SearchPage = ({ location }) => {
   return (
     <Layout>
-      <Header />
+      <Header location={location} />
       <Search />
     </Layout>
   )

@@ -10,41 +10,18 @@ import MenuIcon from '../widgets/MenuIcon'
 import { colors } from '../styles/theme'
 import { media } from '../styles/utils'
 import { DesktopLinks, Menu } from './Menu'
-
-const HeaderContainer = styled.section`
-  ${containerStyles}
-  height: 100px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 2px solid ${({ theme }) => theme.colors.grey};
-`
-
-const Wrapper = styled.header`
-  position: fixed;
-  top: 0;
-  width: 100%;
-  background-color: #fff;
-  height: 100px;
-
-  ${media.phone`position: relative;`}
-`
-
-const MenuButton = styled.div`
-  position: relative;
-  display: none;
-
-  ${media.tablet`display: block;`}
-`
+import checkIntersection from '../utils/intersectionObserver'
 
 class Header extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
       menuOpen: false,
+      showFixed: false,
     }
     this.menuElement = null
     this.appBarElement = null
+    this.observableElement = null
     this.menuAnimation = new TimelineLite({ paused: true })
   }
 
@@ -54,6 +31,15 @@ class Header extends React.Component {
     this.menuAnimation.to(this.menuElement, 0.2, {
       height: '400px',
       borderBottom: `8px solid ${colors.secondary}`,
+    })
+
+    checkIntersection(this.observableElement, (entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          this.setState({ showFixed: true })
+          observer.disconnect()
+        }
+      })
     })
   }
 
@@ -68,27 +54,77 @@ class Header extends React.Component {
   }
 
   render() {
+    const { location } = this.props
+
     return (
       <React.Fragment>
         <Wrapper ref={header => (this.menuElement = header)}>
           <HeaderContainer ref={section => (this.appBarElement = section)}>
             <div>
               <Link to="/">
-                <Logo width={60} />
+                <HeaderLogo>GEOFFOKUMU</HeaderLogo>
               </Link>
             </div>
             <div>
-              <DesktopLinks />
+              <DesktopLinks location={location.pathname} />
               <MenuButton onClick={this.handleClick}>
                 <MenuIcon active={this.state.menuOpen} />
               </MenuButton>
             </div>
           </HeaderContainer>
-          {this.state.menuOpen && <Menu />}
+          {this.state.menuOpen && <Menu location={location.pathname} />}
         </Wrapper>
+        <ObservableElement ref={div => (this.observableElement = div)} />
       </React.Fragment>
     )
   }
 }
+
+const HeaderLogo = styled.h1`
+  font-size: 1.2rem;
+  line-height: 1;
+  font-family: ${({ theme }) => theme.font.sans};
+  color: ${({ theme }) => theme.colors.black};
+  text-decoration: none;
+`
+
+const HeaderContainer = styled.section`
+  ${containerStyles}
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid ${({ theme }) => theme.colors.grey};
+
+  a {
+    text-decoration: none;
+  }
+`
+
+const ObservableElement = styled.div`
+  position: absolute;
+  top: 160vh;
+  left: 100px;
+  width: 50px;
+  height: 50px;
+  background: black;
+  opacity: 0.0001;
+`
+
+const Wrapper = styled.header`
+  position: fixed;
+  top: 0;
+  z-index: 10;
+  width: 100%;
+  background-color: #fff;
+  height: 60px;
+`
+
+const MenuButton = styled.div`
+  position: relative;
+  display: none;
+
+  ${media.tablet`display: block;`}
+`
 
 export default Header

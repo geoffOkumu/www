@@ -3,7 +3,7 @@ import React from 'react'
 import Layout from '../components/containers/Layout'
 import Header from '../components/containers/Header'
 
-const AboutPage = ({ location }) => {
+const ContactPage = ({ location }) => {
   return (
     <Layout>
       <Header location={location} />
@@ -12,4 +12,4 @@ const AboutPage = ({ location }) => {
   )
 }
 
-export default AboutPage
+export default ContactPage
