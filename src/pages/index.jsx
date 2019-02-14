@@ -22,11 +22,7 @@ const IndexPage = ({ location, data }) => {
               key={post.node.frontmatter.title}
               title={post.node.frontmatter.title}
               date={post.node.frontmatter.date}
-              excerpt={post.node.excerpt}
-              author={post.node.frontmatter.author}
               category={post.node.frontmatter.category}
-              image={post.node.frontmatter.featuredImg}
-              odd={true}
             />
           ))}
         </Container>
@@ -53,14 +49,10 @@ export const blogPageQuery = graphql`
       edges {
         node {
           id
-          excerpt(pruneLength: 400)
           frontmatter {
             title
             date(formatString: "DD MMMM, YYYY")
             category
-            description
-            author
-            featuredImg
           }
         }
       }

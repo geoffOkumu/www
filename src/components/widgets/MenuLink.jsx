@@ -8,6 +8,7 @@ const LinkWrapper = styled.div`
   text-transform: uppercase;
   font-size: 1.2rem;
   line-height: 1;
+  font-weight: bold;
   margin-left: 2rem;
 
   a {

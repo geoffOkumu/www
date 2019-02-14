@@ -5,15 +5,14 @@ import Heading from '../widgets/Heading'
 import Text from '../widgets/Text'
 import { media } from '../styles/utils'
 
-class BlogPostCard extends React.Component {
+export default class BlogPostCard extends React.Component {
   render() {
-    const { title, excerpt, date, category, author, image } = this.props
+    const { title, date, category } = this.props
     return (
       <PostWrapper>
         <Heading.h2 customStyles={customStyles.heading}>{title}</Heading.h2>
         <PostDetails>
           <Text.span>{category}</Text.span>
-          <Text.span>{author}</Text.span>
           <Text.span>{date}</Text.span>
         </PostDetails>
       </PostWrapper>
@@ -86,5 +85,3 @@ const PostWrapper = styled.article`
 PostWrapper.defaultProps = {
   background: '#C5E3D7',
 }
-
-export default BlogPostCard
