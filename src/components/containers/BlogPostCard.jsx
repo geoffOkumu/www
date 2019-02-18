@@ -1,5 +1,7 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
+import { Link } from 'gatsby'
+import kebabCase from 'lodash/kebabCase'
 
 import Heading from '../widgets/Heading'
 import Text from '../widgets/Text'
@@ -10,7 +12,9 @@ export default class BlogPostCard extends React.Component {
     const { title, date, category } = this.props
     return (
       <PostWrapper>
-        <Heading.h2 customStyles={customStyles.heading}>{title}</Heading.h2>
+        <Link to={`/${kebabCase(title)}`}>
+          <Heading.h2 customStyles={customStyles.heading}>{title}</Heading.h2>
+        </Link>
         <PostDetails>
           <Text.span>{category}</Text.span>
           <Text.span>{date}</Text.span>
@@ -78,6 +82,15 @@ const PostWrapper = styled.article`
   flex-wrap: wrap;
   align-items: center;
   position: relative;
+
+  a {
+    color: ${({ theme }) => theme.colors.textDark};
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+  }
 
   ${media.phone`height: 400px;`}
 `

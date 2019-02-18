@@ -12,7 +12,7 @@ class Tagline extends React.Component {
       <Wrapper>
         <Container>
           <Heading.h1 customStyles={custom.heading}>
-            Front-end Development Insights
+            Software Development Insights
           </Heading.h1>
           <Text.span customStyles={custom.span}>By geoffOkumu</Text.span>
         </Container>

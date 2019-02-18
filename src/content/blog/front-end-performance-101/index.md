@@ -10,18 +10,9 @@ author: Geoff Okumu
 
 In our shared pursuit to push the web to do more, we're running into a common problem: performance. Sites have more features than ever before. So much so, that many sites now struggle to achieve a high level of performance across a variety of network conditions and devices.
 
-<article>
-<style>
-  p {
-    display: block;
-    background: yellow;
-  }
-</style>
 # Titlte
 
 Performance issues vary. At best, they create small delays that are only briefly annoying to your users. At worst, they make your site completely inaccessible, unresponsive to user input, or both.
-
-</article>
 
 Performance issues vary. At best, they create small delays that are only briefly annoying to your users. At worst, they make your site completely inaccessible, unresponsive to user input, or both.
 

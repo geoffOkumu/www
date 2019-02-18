@@ -27,7 +27,7 @@ const IndexPage = ({ location, data }) => {
           ))}
         </Container>
       </Wrapper>
-      <div style={{ height: '100vh' }} />
+      <div style={{ height: '20vh' }} />
     </Layout>
   )
 }
