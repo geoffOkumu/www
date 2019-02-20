@@ -81,7 +81,7 @@ class Header extends React.Component {
 }
 
 const HeaderLogo = styled.h1`
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   line-height: 1;
   font-family: ${({ theme }) => theme.font.sans};
   color: ${({ theme }) => theme.colors.black};

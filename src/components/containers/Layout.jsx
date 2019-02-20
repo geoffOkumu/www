@@ -15,7 +15,9 @@ class Layout extends React.Component {
     return (
       <React.Fragment>
         <Helmet>
-          <title>GeoffOkumu</title>
+          <title>
+            GEOFFOKUMU - Software development insights by Geoffrey Okumu
+          </title>
           <html lang="en" />
           <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
           <link

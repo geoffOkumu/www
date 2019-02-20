@@ -1,22 +1,28 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 import Layout from '../components/containers/Layout'
 import Header from '../components/containers/Header'
-import Tagline from '../components/containers/Tagline'
 import Container from '../components/widgets/Container'
 import BlogPostCard from '../components/containers/BlogPostCard'
+import Heading from '../components/widgets/Heading'
+import { media } from '../components/styles/utils'
 
-const IndexPage = ({ location, data }) => {
+const CategoryPage = ({ location, data, pathContext }) => {
   const posts = data.blogposts.edges
+  const { category } = pathContext
   return (
     <Layout>
       <Header location={location} />
       <Wrapper>
         <div style={{ height: 100 }} />
-        <Tagline />
         <Container>
+          <PageTittle>
+            <Heading.h1 customStyles={customStyles.heading}>
+              All Posts in # {category}
+            </Heading.h1>
+          </PageTittle>
           {posts.map(post => (
             <BlogPostCard
               key={post.node.frontmatter.title}
@@ -31,17 +37,32 @@ const IndexPage = ({ location, data }) => {
   )
 }
 
+const customStyles = {
+  heading: css`
+    display: block;
+    font-size: 3.5rem !important;
+
+    ${media.phone`
+      font-size: 1.8rem !important;
+    `}
+  `,
+}
+
 const Wrapper = styled.section`
   background-color: ${({ theme }) => theme.colors.bodyBg};
   padding-bottom: 4rem;
 `
 
-export default IndexPage
+const PageTittle = styled.div`
+  padding: 2rem 0;
+`
 
-export const blogPageQuery = graphql`
-  query IndexQuery {
+export default CategoryPage
+
+export const categoryPageQuery = graphql`
+  query CategoryQuery($category: String) {
     blogposts: allMarkdownRemark(
-      filter: { frontmatter: { templateKey: { eq: "blog" } } }
+      filter: { frontmatter: { category: { eq: $category } } }
       limit: 12
       sort: { fields: [frontmatter___date], order: DESC }
     ) {

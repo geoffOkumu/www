@@ -25,19 +25,6 @@ export default class BlogPostCard extends React.Component {
 }
 
 const customStyles = {
-  img: css`
-    height: 240px;
-    width: auto;
-    object-fit: cover;
-
-    ${media.tablet`
-      width: 100%;
-      height: auto;
-    `}
-  `,
-  excerpt: css`
-    max-width: 90%;
-  `,
   heading: css`
     display: block;
     font-size: 3.5rem !important;
@@ -92,7 +79,7 @@ const PostWrapper = styled.article`
     width: 100%;
   }
 
-  ${media.phone`height: 400px;`}
+  ${media.phone`height: 300px;`}
 `
 
 PostWrapper.defaultProps = {

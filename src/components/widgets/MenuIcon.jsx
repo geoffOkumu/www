@@ -22,12 +22,12 @@ const Hamburger = styled.div`
   }
 
   &::before {
-    top: ${props => (props.active ? '0' : '-12px')};
+    top: ${props => (props.active ? '0' : '-10px')};
     transform: ${props => (props.active ? 'rotate(-135deg)' : 'none')};
   }
 
   &::after {
-    top: ${props => (props.active ? '0' : '12px')};
+    top: ${props => (props.active ? '0' : '10px')};
     transform: ${props => (props.active ? 'rotate(-45deg)' : 'none')};
   }
 `

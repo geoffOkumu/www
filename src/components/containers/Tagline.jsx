@@ -34,9 +34,11 @@ const Wrapper = styled.section`
 const custom = {
   heading: css`
     font-size: 3.5rem !important;
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
 
-    ${media.phone`font-size: 1.6rem !important;`}
+    ${media.phone`
+      font-size: 1.6rem !important;
+    `}
   `,
   span: css`
     font-family: ${({ theme }) => theme.font.display};

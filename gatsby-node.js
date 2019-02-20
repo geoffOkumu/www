@@ -17,6 +17,7 @@ exports.createPages = ({ actions, graphql }) => {
               id
               title
               templateKey
+              category
             }
           }
         }
@@ -43,6 +44,30 @@ exports.createPages = ({ actions, graphql }) => {
           },
         })
       }
+    })
+
+    // Tag pages:
+    let categories = []
+    // Iterate through each post, putting all found tags into `categories`
+    posts.forEach(edge => {
+      if (_.get(edge, `node.frontmatter.category`)) {
+        categories = categories.concat(edge.node.frontmatter.category)
+      }
+    })
+    // Eliminate duplicate tags
+    categories = _.uniq(categories)
+
+    // Make tag pages
+    categories.forEach(category => {
+      const categoryPath = `/categories/${_.kebabCase(category)}`
+
+      createPage({
+        path: categoryPath,
+        component: path.resolve(`src/templates/categoryPage.jsx`),
+        context: {
+          category,
+        },
+      })
     })
   })
 }

@@ -6,6 +6,7 @@ import kebabCase from 'lodash/kebabCase'
 import Container from '../widgets/Container'
 import Heading from '../widgets/Heading'
 import Text from '../widgets/Text'
+import { media } from '../styles/utils'
 
 export default class BlogPostBody extends Component {
   render() {
@@ -39,9 +40,18 @@ const customStyles = {
     padding-top: 3rem;
     display: block;
     font-size: 3.5rem !important;
+
+    ${media.phone`
+      font-size: 1.8rem !important;
+      padding-top: 2rem;
+    `}
   `,
   text: css`
     font-size: 1.6rem;
+
+    ${media.phone`
+      font-size: 1.2rem !important;
+    `}
   `,
   category: css`
     font-size: 1.6rem;
@@ -56,6 +66,11 @@ const customStyles = {
         content: '# ';
       }
     }
+
+    ${media.phone`
+      font-size: 1.2rem !important;
+      padding-left: 1rem;
+    `}
   `,
 }
 
@@ -66,6 +81,11 @@ const PostActions = styled.div`
   margin-top: 3rem;
   height: 400px;
   width: 30%;
+
+  ${media.phone`
+      width: 100%;
+      margin-left: 0;
+    `}
 `
 
 const Wrapper = styled.div`
@@ -80,6 +100,10 @@ const ArticleDetails = styled.div`
   padding-bottom: 2rem;
   width: 100%;
   border-bottom: solid 2px ${({ theme }) => theme.colors.textDark};
+
+  ${media.phone`
+      padding-bottom: 1.4rem;
+    `}
 `
 
 const Article = styled.article`
@@ -87,4 +111,8 @@ const Article = styled.article`
   max-width: 60%;
   font-size: 1.2rem;
   line-height: 1.5;
+
+  ${media.phone`
+      max-width: 100%;
+    `}
 `

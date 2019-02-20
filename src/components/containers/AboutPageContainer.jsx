@@ -4,6 +4,7 @@ import styled, { css } from 'styled-components'
 import Container from '../widgets/Container'
 import Heading from '../widgets/Heading'
 import Text from '../widgets/Text'
+import { media } from '../styles/utils'
 
 export default class AboutPageContatainer extends Component {
   render() {
@@ -30,6 +31,12 @@ const customStyles = {
     grid-column: 2/3;
     margin-bottom: 30px !important;
     color: ${({ theme }) => theme.colors.textDark};
+
+    ${media.phone`
+      grid-column: 1/3;
+      font-size: 4rem;
+      margin-bottom: 0 !important;
+    `}
   `,
   container: css`
     display: grid;
@@ -40,16 +47,29 @@ const customStyles = {
     font-style: oblique;
     font-size: 1.6rem;
     line-height: 1.5;
+
+    ${media.phone`
+      grid-column: 1/3;
+      font-size: 1.4rem;
+    `}
   `,
   story: css`
     grid-column: 2/3;
     font-size: 1.2rem;
     line-height: 1.5;
+
+    ${media.phone`
+      grid-column: 1/3;
+    `}
   `,
   cta: css`
     grid-column: 2/3;
     font-size: 1.2rem;
     line-height: 1.5;
+
+    ${media.phone`
+      grid-column: 1/3;
+    `}
   `,
 }
 
