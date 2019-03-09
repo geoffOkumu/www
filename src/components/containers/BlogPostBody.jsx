@@ -112,7 +112,7 @@ const Article = styled.article`
   font-size: 1.2rem;
   line-height: 1.5;
 
-  ${media.phone`
+  ${media.tablet`
       max-width: 100%;
     `}
 `

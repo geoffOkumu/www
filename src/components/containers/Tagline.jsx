@@ -26,7 +26,8 @@ const Wrapper = styled.section`
   padding-bottom: 80px;
 
   ${media.phone`
-    padding-bottom: 60px;
+    padding-bottom: 40px;
+    padding-top: 0;
   `}
 `
 

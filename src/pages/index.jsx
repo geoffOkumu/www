@@ -14,7 +14,7 @@ const IndexPage = ({ location, data }) => {
     <Layout>
       <Header location={location} />
       <Wrapper>
-        <div style={{ height: 100 }} />
+        <div style={{ height: 80 }} />
         <Tagline />
         <Container>
           {posts.map(post => (

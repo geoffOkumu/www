@@ -10,7 +10,6 @@ const AboutPage = ({ location, data }) => {
     <Layout>
       <Header location={location} />
       <AboutPageContatainer data={data.aboutPage.edges[0].node.frontmatter} />
-      <div style={{ height: '20vh' }} />
     </Layout>
   )
 }

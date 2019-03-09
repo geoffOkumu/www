@@ -6,7 +6,7 @@ import MenuLink from '../widgets/MenuLink'
 import { media } from '../styles/utils'
 import { fadeIn } from '../styles/animations'
 
-const linksList = ['About', 'Work', 'Contact']
+const linksList = ['About', 'Work', 'Contact', 'Search']
 
 const active = (h, location) => new RegExp('/\\b(' + h + ')\\b').test(location)
 
@@ -35,7 +35,7 @@ export const DesktopLinks = ({ location }) => (
 
 export const Menu = ({ location }) => (
   <MenuWrapper>
-    <TogglesWrapper>Toggles</TogglesWrapper>
+    {/* <TogglesWrapper>Toggles</TogglesWrapper> */}
     <LinksWrapper>
       <Links location={location} />
     </LinksWrapper>
@@ -45,6 +45,7 @@ export const Menu = ({ location }) => (
 const MenuWrapper = styled.section`
   font-family: ${({ theme }) => theme.font.sans};
   animation: ${fadeIn} 1s;
+  width: 100%;
 `
 
 const TogglesWrapper = styled.div`
@@ -56,7 +57,7 @@ const LinksWrapper = styled.div`
   background-color: ${({ theme }) => theme.colors.white};
   padding: 1rem;
   text-align: left;
-  margin-left: 50%;
+  padding-left: 50%;
 
   ${media.tablet`text-align: right`}
 `

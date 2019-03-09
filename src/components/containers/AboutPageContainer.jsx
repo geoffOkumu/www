@@ -34,7 +34,7 @@ const customStyles = {
 
     ${media.phone`
       grid-column: 1/3;
-      font-size: 4rem;
+      font-size: 3rem;
       margin-bottom: 0 !important;
     `}
   `,
@@ -50,7 +50,7 @@ const customStyles = {
 
     ${media.phone`
       grid-column: 1/3;
-      font-size: 1.4rem;
+      font-size: 1.2rem;
     `}
   `,
   story: css`
@@ -60,6 +60,7 @@ const customStyles = {
 
     ${media.phone`
       grid-column: 1/3;
+      font-size: 1.2;
     `}
   `,
   cta: css`
