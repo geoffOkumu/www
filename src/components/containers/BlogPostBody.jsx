@@ -17,7 +17,9 @@ export default class BlogPostBody extends Component {
     return (
       <Wrapper>
         <Helmet>
-          <title>{title}</title>
+          <title>
+            {title} - Software development insights by Geoffrey Okumu
+          </title>
           <meta name="description" content={excerpt} />
           <meta
             property="og:url"
@@ -28,7 +30,7 @@ export default class BlogPostBody extends Component {
           <meta property="og:description" content={excerpt} />
           <meta
             property="og:image"
-            content={`https://www.geoffokumu.com/${featuredImg}`}
+            content={`https://www.geoffokumu.com/static/${featuredImg}`}
           />
           <meta property="og:image:width" content="1200" />
           <meta property="og:image:height" content="630" />
@@ -76,7 +78,7 @@ const customStyles = {
     font-size: 1.6rem;
 
     ${media.phone`
-      font-size: 1.2rem !important;
+      font-size: 1rem !important;
     `}
   `,
   category: css`
@@ -94,7 +96,7 @@ const customStyles = {
     }
 
     ${media.phone`
-      font-size: 1.2rem !important;
+      font-size: 1rem !important;
       padding-left: 1rem;
     `}
   `,
