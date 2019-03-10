@@ -7,7 +7,6 @@ const WorkPage = ({ location }) => {
   return (
     <Layout>
       <Header location={location} />
-      <div style={{ height: '200vh' }} />
     </Layout>
   )
 }

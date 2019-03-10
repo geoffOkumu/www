@@ -26,6 +26,7 @@ export const blogTemplateQuery = graphql`
         title
         date(formatString: "DD MMMM, YYYY")
         category
+        featuredImg
       }
     }
   }

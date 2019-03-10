@@ -8,6 +8,8 @@ category: performance
 author: Geoff Okumu
 ---
 
+<img src='./computer-1245714_1280.jpg' alt='laptop computer'>
+
 In our shared pursuit to push the web to do more, we're running into a common problem: performance. Sites have more features than ever before. So much so, that many sites now struggle to achieve a high level of performance across a variety of network conditions and devices.
 
 # Titlte

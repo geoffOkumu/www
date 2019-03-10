@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import styled, { css } from 'styled-components'
 import { Link } from 'gatsby'
 import kebabCase from 'lodash/kebabCase'
+import Helmet from 'react-helmet'
 
 import Container from '../widgets/Container'
 import Heading from '../widgets/Heading'
@@ -11,19 +12,43 @@ import { media } from '../styles/utils'
 export default class BlogPostBody extends Component {
   render() {
     const { data } = this.props
-    const { html } = data
-    const { title, date, category } = data.frontmatter
+    const { html, excerpt } = data
+    const { title, date, category, featuredImg } = data.frontmatter
     return (
       <Wrapper>
+        <Helmet>
+          <title>{title}</title>
+          <meta name="description" content={excerpt} />
+          <meta
+            property="og:url"
+            content={`https://www.geoffokumu.com/${kebabCase(title)}`}
+          />
+          <meta property="og:type" content="article" />
+          <meta property="og:title" content={title} />
+          <meta property="og:description" content={excerpt} />
+          <meta
+            property="og:image"
+            content={`https://www.geoffokumu.com/${featuredImg}`}
+          />
+          <meta property="og:image:width" content="1200" />
+          <meta property="og:image:height" content="630" />
+          <meta property="og:site_name" content="Geoffokumu" />
+          <meta property="article:published_time" content={date} />
+          <meta name="twitter:card" content="summary" />
+          <meta name="twitter:site" content="@geoffOkumu" />
+          <meta name="twitter:creator" content="@geoffOkumu" />
+        </Helmet>
         <Container customStyles={customStyles.container}>
-          <Heading.h1 customStyles={customStyles.heading}>{title}</Heading.h1>
           <ArticleDetails>
+            <Heading.h1 customStyles={customStyles.heading}>{title}</Heading.h1>
             <Text.span customStyles={customStyles.text}>{date}</Text.span>
             <Text.span customStyles={customStyles.category}>
               <Link to={`/categories/${kebabCase(category)}`}>{category}</Link>
             </Text.span>
           </ArticleDetails>
-          <Article dangerouslySetInnerHTML={{ __html: html }} />
+          <ArticleContainer>
+            <Article dangerouslySetInnerHTML={{ __html: html }} />
+          </ArticleContainer>
           <PostActions>k</PostActions>
         </Container>
       </Wrapper>
@@ -39,6 +64,7 @@ const customStyles = {
   heading: css`
     padding-top: 3rem;
     display: block;
+    width: 100%;
     font-size: 3.5rem !important;
 
     ${media.phone`
@@ -77,15 +103,9 @@ const customStyles = {
 const PostActions = styled.div`
   background-color: ${({ theme }) => theme.colors.white};
   padding: 1rem;
-  margin-left: 4rem;
   margin-top: 3rem;
   height: 400px;
-  width: 30%;
-
-  ${media.phone`
-      width: 100%;
-      margin-left: 0;
-    `}
+  width: 100%;
 `
 
 const Wrapper = styled.div`
@@ -97,22 +117,87 @@ const Wrapper = styled.div`
 
 const ArticleDetails = styled.div`
   padding-top: 1rem;
-  padding-bottom: 2rem;
-  width: 100%;
-  border-bottom: solid 2px ${({ theme }) => theme.colors.textDark};
+  padding-bottom: 1rem;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+`
 
-  ${media.phone`
-      padding-bottom: 1.4rem;
-    `}
+const ArticleContainer = styled.section`
+  width: 100%;
 `
 
 const Article = styled.article`
   padding-top: 2rem;
-  max-width: 60%;
+  padding-bottom: 4rem;
   font-size: 1.2rem;
   line-height: 1.5;
 
+  &::after {
+    content: '...';
+    display: block;
+    width: 100%;
+    text-align: center;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    font-family: ${({ theme }) => theme.font.sans};
+  }
+
+  p,
+  h1,
+  h2,
+  h3,
+  span {
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  pre,
+  code {
+    max-width: 960px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  pre {
+    background-color: ${({ theme }) => theme.colors.textLight};
+    max-width: 960px;
+    margin-left: auto;
+    margin-right: auto;
+    overflow-x: auto;
+    padding: 1rem;
+    margin-top: 2rem !important;
+    margin-bottom: 2rem !important;
+    border-radius: 4px;
+    font-weight: 300;
+
+    &::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: #f1f1f1;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: #888;
+      border-radius: 6px;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+      background: #555;
+    }
+  }
+
   ${media.tablet`
       max-width: 100%;
+      padding-bottom: 1rem;
     `}
 `

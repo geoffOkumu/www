@@ -15,6 +15,8 @@ category: performance
 author: Geoff Okumu
 ---
 
+<img src='./typography-1069409_1920.jpg' alt='typography'>
+
 By default, font requests are delayed until the render tree is constructed, which can result in delayed text rendering commonly known as Flash of Invisible Text (FOIT). The browser first constructs the render tree, which is dependent on the DOM and CSSOM trees, before it knows which font resources it needs in order to render the text. As a result, font requests are delayed well after other critical resources, and the browser may be blocked from rendering text until the resource is fetched.
 
 GET html -> Build DOM -> GET CSS-> Build CSSOM -> GET font -> render text
