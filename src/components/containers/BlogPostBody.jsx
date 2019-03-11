@@ -30,7 +30,7 @@ export default class BlogPostBody extends Component {
           <meta property="og:description" content={excerpt} />
           <meta
             property="og:image"
-            content={`https://www.geoffokumu.com/static/${featuredImg}`}
+            content={`https://www.geoffokumu.com/img/${featuredImg}`}
           />
           <meta property="og:image:width" content="1200" />
           <meta property="og:image:height" content="630" />
