@@ -1,0 +1,14 @@
+{
+  "short_name": "GeoffOkumu",
+  "name": "Geoffrey Okumu",
+  "icons": [
+    {
+      "src": "/images/logo.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#f9cf00",
+  "theme_color": "#1e1e1e"
+}
