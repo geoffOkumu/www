@@ -1,6 +1,7 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import styled, { css } from 'styled-components'
+import Helmet from 'react-helmet'
 
 import Layout from '../components/containers/Layout'
 import Header from '../components/containers/Header'
@@ -14,6 +15,7 @@ const CategoryPage = ({ location, data, pathContext }) => {
   const { category } = pathContext
   return (
     <Layout>
+      <Helmet title={`${category.toUpperCase()} - Software Development Insights by Geoffrey Okumu`} />
       <Header location={location} />
       <Wrapper>
         <div style={{ height: 100 }} />
