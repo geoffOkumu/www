@@ -23,6 +23,7 @@ class Layout extends React.Component {
           <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
           <link rel="icon" href="/favicon.ico" type="image/x-icon" />
           <link rel="manifest" href="/manifest.json" />
+          <meta name="theme-color" content="#1e1e1e" />
           <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
           <link
             href="https://fonts.googleapis.com/css?family=Merriweather|Montserrat:700|Playfair+Display:400i"
