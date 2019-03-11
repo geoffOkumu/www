@@ -79,6 +79,8 @@ const customStyles = {
 
     ${media.phone`
       font-size: 1rem !important;
+      font-family: ${({ theme }) => theme.font.sans};
+      font-weight: 700;
     `}
   `,
   category: css`
@@ -98,6 +100,8 @@ const customStyles = {
     ${media.phone`
       font-size: 1rem !important;
       padding-left: 1rem;
+      font-family: ${({ theme }) => theme.font.sans};
+      font-weight: 700;
     `}
   `,
 }

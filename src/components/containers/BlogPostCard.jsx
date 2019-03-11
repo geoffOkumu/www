@@ -10,8 +10,23 @@ import { media } from '../styles/utils'
 export default class BlogPostCard extends React.Component {
   render() {
     const { title, date, category } = this.props
+
+    let postBackground
+
+    switch (category.toLowerCase()) {
+      case 'performance':
+        postBackground = '#C5E3D7'
+        break
+      case 'react':
+        postBackground = '#e9c893'
+        break
+      default:
+        postBackground = '#C5E3D7'
+        break
+    }
+
     return (
-      <PostWrapper>
+      <PostWrapper background={postBackground}>
         <Link to={`/${kebabCase(title)}`}>
           <Heading.h2 customStyles={customStyles.heading}>{title}</Heading.h2>
         </Link>
@@ -81,7 +96,3 @@ const PostWrapper = styled.article`
 
   ${media.phone`height: 300px;`}
 `
-
-PostWrapper.defaultProps = {
-  background: '#C5E3D7',
-}
