@@ -5,12 +5,14 @@ import CSSPlugin from 'gsap/CSSPlugin'
 import TimelineLite from 'gsap/TimelineLite'
 
 import { containerStyles } from '../widgets/Container'
-import Logo from '../svg/Logo'
 import MenuIcon from '../widgets/MenuIcon'
 import { colors } from '../styles/theme'
 import { media } from '../styles/utils'
 import { DesktopLinks, Menu } from './Menu'
 import checkIntersection from '../utils/intersectionObserver'
+
+//Prevent CSSPlugin from being removed by tree shaking
+const used = [CSSPlugin]
 
 class Header extends React.Component {
   constructor(props) {
