@@ -9,6 +9,7 @@ import Input from '../widgets/Input'
 import Container from '../widgets/Container'
 import Heading from '../widgets/Heading'
 import Text from '../widgets/Text'
+import { media } from '../styles/utils'
 
 class Search extends React.Component {
   constructor(props) {
@@ -140,6 +141,10 @@ const SearchReasultItem = styled.div`
 
   h2 {
     margin-bottom: 4px;
+
+    ${media.phone`
+      font-size: 1.6rem;
+    `}
   }
 
   span {

@@ -139,6 +139,10 @@ const Article = styled.article`
   font-size: 1.2rem;
   line-height: 1.5;
 
+  ${media.phone`
+    font-size: 1rem;
+  `}
+
   &::after {
     content: '...';
     display: block;
