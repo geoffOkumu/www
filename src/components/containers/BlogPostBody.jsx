@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import styled, { css } from 'styled-components'
+import styled, { css, createGlobalStyle } from 'styled-components'
 import { Link } from 'gatsby'
 import kebabCase from 'lodash/kebabCase'
 import Helmet from 'react-helmet'
@@ -8,6 +8,7 @@ import Container from '../widgets/Container'
 import Heading from '../widgets/Heading'
 import Text from '../widgets/Text'
 import { media } from '../styles/utils'
+import { prismjsTheme } from '../styles/prismjsTheme'
 
 export default class BlogPostBody extends Component {
   render() {
@@ -40,6 +41,7 @@ export default class BlogPostBody extends Component {
           <meta name="twitter:site" content="@geoffOkumu" />
           <meta name="twitter:creator" content="@geoffOkumu" />
         </Helmet>
+        <PrismJSTheme />
         <Container customStyles={customStyles.container}>
           <ArticleDetails>
             <Heading.h1 customStyles={customStyles.heading}>{title}</Heading.h1>
@@ -133,6 +135,11 @@ const ArticleContainer = styled.section`
   width: 100%;
 `
 
+//Prism js theme styles
+const PrismJSTheme = createGlobalStyle`
+  ${prismjsTheme}
+`
+
 const Article = styled.article`
   padding-top: 2rem;
   padding-bottom: 4rem;
@@ -176,7 +183,6 @@ const Article = styled.article`
   }
 
   pre {
-    background-color: ${({ theme }) => theme.colors.textLight};
     max-width: 960px;
     margin-left: auto;
     margin-right: auto;

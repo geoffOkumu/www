@@ -1,6 +1,6 @@
 ---
 templateKey: blog
-title: Styling in React for Scale - CSS-in-Js, Css Modules, Inline styles
+title: Styling in React for Scale; CSS-in-Js, Css Modules, Inline styles
 category: React
 date: '2019-01-28T00:18:04+03:00'
 featuredImg: /img/code-2620118_1280.jpg
