@@ -24,6 +24,7 @@
   "homepage": "https://github.com/geoffOkumu/www#readme",
   "dependencies": {
     "babel-plugin-styled-components": "^1.10.0",
+    "fuse.js": "^3.4.4",
     "gatsby": "^2.0.91",
     "gatsby-image": "^2.0.27",
     "gatsby-plugin-react-helmet": "^3.0.5",
