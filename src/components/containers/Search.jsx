@@ -18,6 +18,7 @@ class Search extends React.Component {
     this.state = {
       searchtext: '',
       searchReasults: [],
+      notFound: false,
     }
 
     //Init fuse.js
@@ -53,11 +54,15 @@ class Search extends React.Component {
 
     let results = this.fuseSearch.search(searchtext)
 
-    this.setState({ searchReasults: results })
+    if (searchtext.length > 8 && results.length === 0) {
+      this.setState({ notFound: true })
+    } else {
+      this.setState({ notFound: false, searchReasults: results })
+    }
   }
 
   render() {
-    const { searchtext, searchReasults } = this.state
+    const { searchtext, searchReasults, notFound } = this.state
     const { posts } = this.props
 
     const categories = uniq(posts.map(post => post.node.frontmatter.category))
@@ -73,14 +78,20 @@ class Search extends React.Component {
           />
         </Form>
         <section>
-          {searchReasults.map(result => (
-            <SearchReasultItem key={result.title}>
-              <Link to={`/${kebabCase(result.title)}`}>
-                <Heading.h2>{result.title}</Heading.h2>
-                <Text.span>{result.category}</Text.span>
-              </Link>
-            </SearchReasultItem>
-          ))}
+          {notFound ? (
+            <div>
+              <Text.span>Not Found</Text.span>
+            </div>
+          ) : (
+            searchReasults.map(result => (
+              <SearchReasultItem key={result.title}>
+                <Link to={`/${kebabCase(result.title)}`}>
+                  <Heading.h2>{result.title}</Heading.h2>
+                  <Text.span>{result.category}</Text.span>
+                </Link>
+              </SearchReasultItem>
+            ))
+          )}
         </section>
         <CategoriesWrapper>
           <Heading.h3>Categories</Heading.h3>
