@@ -9,7 +9,6 @@ import MenuIcon from '../widgets/MenuIcon'
 import { colors } from '../styles/theme'
 import { media } from '../styles/utils'
 import { DesktopLinks, Menu } from './Menu'
-import checkIntersection from '../utils/intersectionObserver'
 
 //Prevent CSSPlugin from being removed by tree shaking
 const used = [CSSPlugin]
@@ -19,11 +18,9 @@ class Header extends React.Component {
     super(props)
     this.state = {
       menuOpen: false,
-      showFixed: false,
     }
     this.menuElement = null
     this.appBarElement = null
-    this.observableElement = null
     this.menuAnimation = new TimelineLite({ paused: true })
   }
 
@@ -33,15 +30,6 @@ class Header extends React.Component {
     this.menuAnimation.to(this.menuElement, 0.2, {
       height: '400px',
       borderBottom: `8px solid ${colors.secondary}`,
-    })
-
-    checkIntersection(this.observableElement, (entries, observer) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          this.setState({ showFixed: true })
-          observer.disconnect()
-        }
-      })
     })
   }
 
@@ -76,7 +64,6 @@ class Header extends React.Component {
           </HeaderContainer>
           {this.state.menuOpen && <Menu location={location.pathname} />}
         </Wrapper>
-        <ObservableElement ref={div => (this.observableElement = div)} />
       </React.Fragment>
     )
   }
@@ -101,16 +88,6 @@ const HeaderContainer = styled.section`
   a {
     text-decoration: none;
   }
-`
-
-const ObservableElement = styled.div`
-  position: absolute;
-  top: 160vh;
-  left: 100px;
-  width: 50px;
-  height: 50px;
-  background: black;
-  opacity: 0.0001;
 `
 
 const Wrapper = styled.header`
