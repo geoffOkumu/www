@@ -1,16 +1,23 @@
 ---
 templateKey: blog
-title: Styling in React for Scale - CSS-in-Js, Css Modules, Inline styles
+title: Styling in React - Inline styles, Css Modules, CSS-in-Js
 category: React
 date: '2019-01-28T00:18:04+03:00'
 featuredImg: /img/code-2620118_1280.jpg
 author: Geoff Okumu
 description: >-
-  In our shared pursuit to push the web to do more, we're running into a common problem performance. Sites have more features than ever before. So much so, that many sites now struggle to achieve a high level of performance across a variety of network conditions and devices.
+  This article is an unopinionated exploration into the different styling architectures for react to help you choose the best one that fits your project.
 ---
 
 <img src='code-2620118_1280.jpg' alt='laptop coding'>
 
+## TL;DR
+*This article is an unopinionated exploration into the different styling architectures for react to help you choose the best one that fits your project.*
+
 ## Intro
 
-Component based architecture forces us to rethink how we structure our stylesheets
+Component based architecture forces us to rethink how we structure our stylesheets. At the core of components architecture is encapsulation and separation of concerns, which does not bond will with css, since CSS creates all styles as global. To solve this issue many programmers have created diffent styling frameworks, to bring standardisation and modularity to CSS. This article is an unopinionated exploration into the different styling architectures for react to help you choose the best one that fits your project.
+
+## Basics
+
+Standardasation, modularity, scalability
