@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "gatsby build",
+    "build:lambda": "netlify-lambda build src/lambda",
     "develop": "gatsby develop",
     "format": "prettier --write **/*.js **/*.jsx",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -40,6 +41,7 @@
     "gatsby-transformer-sharp": "^2.1.12",
     "gsap": "^2.0.2",
     "lodash": "^4.17.11",
+    "netlify-lambda": "^1.4.5",
     "prismjs": "^1.15.0",
     "prop-types": "^15.6.2",
     "react": "^16.7.0",

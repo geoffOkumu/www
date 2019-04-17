@@ -6,7 +6,7 @@ import MenuLink from '../widgets/MenuLink'
 import { media } from '../styles/utils'
 import { fadeIn } from '../styles/animations'
 
-const linksList = ['About', 'Studio', 'Contact', 'Search']
+const linksList = ['About', 'Studio', 'Search']
 
 const active = (h, location) => new RegExp('/\\b(' + h + ')\\b').test(location)
 
