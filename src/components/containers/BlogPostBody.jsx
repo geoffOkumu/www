@@ -53,7 +53,6 @@ export default class BlogPostBody extends Component {
           <ArticleContainer>
             <Article dangerouslySetInnerHTML={{ __html: html }} />
           </ArticleContainer>
-          <PostActions>k</PostActions>
         </Container>
       </Wrapper>
     )
@@ -66,10 +65,10 @@ const customStyles = {
     flex-wrap: wrap;
   `,
   heading: css`
-    padding-top: 3rem;
+    padding-top: 1rem;
     display: block;
     width: 100%;
-    font-size: 3.5rem !important;
+    text-transform: uppercase;
 
     ${media.phone`
       font-size: 1.8rem !important;
@@ -108,18 +107,10 @@ const customStyles = {
   `,
 }
 
-const PostActions = styled.div`
-  background-color: ${({ theme }) => theme.colors.white};
-  padding: 1rem;
-  margin-top: 3rem;
-  height: 400px;
-  width: 100%;
-`
-
 const Wrapper = styled.div`
-  padding-top: 80px;
+  padding-top: 20px;
   padding-bottom: 80px;
-  background-color: ${({ theme }) => theme.colors.bodyBg};
+  background-color: ${({ theme }) => theme.colors.white};
   min-height: 100vh;
 `
 

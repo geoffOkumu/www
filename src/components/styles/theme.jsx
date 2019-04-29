@@ -1,7 +1,7 @@
 export const colors = {
   white: '#fff',
   black: '#000',
-  primary: '#5da8f3',
+  primary: '#ebeb0f',
   secondary: '#f9cf00',
   tertiary: '#f19f4d',
   blue: '#4484ce',
@@ -13,7 +13,8 @@ export const colors = {
 }
 
 export const font = {
-  sans: "'Montserrat', 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif'",
+  sans:
+    "'Merriweather Sans', 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif'",
   serif: "'Merriweather', 'Georgia', 'serif'",
   display: "'Playfair Display', serif",
   mono: "'Roboto Mono', Monaco, monospace !default",

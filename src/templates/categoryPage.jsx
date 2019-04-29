@@ -15,22 +15,27 @@ const CategoryPage = ({ location, data, pathContext }) => {
   const { category } = pathContext
   return (
     <Layout>
-      <Helmet title={`${category.toUpperCase()} - Software Development Insights by Geoffrey Okumu`} />
+      <Helmet
+        title={`${category.toUpperCase()} - Software Development Insights by Geoffrey Okumu`}
+      />
       <Header location={location} />
       <Wrapper>
-        <div style={{ height: 100 }} />
-        <Container>
-          <PageTittle>
+        <PageTittle>
+          <Container>
             <Heading.h1 customStyles={customStyles.heading}>
               All Posts in # {category}
             </Heading.h1>
-          </PageTittle>
+          </Container>
+        </PageTittle>
+        <Container>
           {posts.map(post => (
             <BlogPostCard
               key={post.node.frontmatter.title}
               title={post.node.frontmatter.title}
               date={post.node.frontmatter.date}
               category={post.node.frontmatter.category}
+              author={post.node.frontmatter.author}
+              excerpt={post.node.excerpt}
             />
           ))}
         </Container>
@@ -51,12 +56,14 @@ const customStyles = {
 }
 
 const Wrapper = styled.section`
-  background-color: ${({ theme }) => theme.colors.bodyBg};
   padding-bottom: 4rem;
 `
 
 const PageTittle = styled.div`
-  padding: 2rem 0;
+  padding: 6rem 0;
+  margin-bottom: 4rem;
+  background-color: ${({ theme }) => theme.colors.bodyBg};
+  border-bottom: solid 2px #000;
 `
 
 export default CategoryPage
@@ -71,10 +78,12 @@ export const categoryPageQuery = graphql`
       edges {
         node {
           id
+          excerpt(pruneLength: 220)
           frontmatter {
             title
             date(formatString: "DD MMMM, YYYY")
             category
+            author
           }
         }
       }

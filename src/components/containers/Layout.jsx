@@ -26,7 +26,7 @@ class Layout extends React.Component {
           <meta name="theme-color" content="#1e1e1e" />
           <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
           <link
-            href="https://fonts.googleapis.com/css?family=Merriweather|Montserrat:700|Playfair+Display:400i"
+            href="https://fonts.googleapis.com/css?family=Merriweather|Merriweather+Sans:700,800"
             rel="stylesheet"
           />
         </Helmet>
