@@ -3,27 +3,26 @@ import styled, { css } from 'styled-components'
 
 import Heading from '../widgets/Heading'
 import Text from '../widgets/Text'
-import Container from '../widgets/Container'
+import { containerStyles } from '../widgets/Container'
 import { media } from '../styles/utils'
 
 class Tagline extends React.Component {
   render() {
     return (
       <Wrapper>
-        <Container>
-          <Heading.h1 customStyles={custom.heading}>
-            Software Development Insights
-          </Heading.h1>
-          <Text.span customStyles={custom.span}>By geoffOkumu</Text.span>
-        </Container>
+        <Heading.h1 customStyles={custom.heading}>
+          Software Development Insights by Geoff Okumu
+        </Heading.h1>
       </Wrapper>
     )
   }
 }
 
 const Wrapper = styled.section`
-  padding-top: 1rem;
-  padding-bottom: 80px;
+  ${containerStyles};
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+  max-width: 80%;
 
   ${media.phone`
     padding-bottom: 40px;
@@ -34,8 +33,9 @@ const Wrapper = styled.section`
 //custom styles
 const custom = {
   heading: css`
-    font-size: 3.5rem !important;
+    font-size: 3rem !important;
     margin-bottom: 1rem;
+    color: ${({ theme }) => theme.colors.textDark};
 
     ${media.phone`
       font-size: 1.6rem !important;

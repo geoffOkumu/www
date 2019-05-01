@@ -10,7 +10,7 @@ import { media } from '../styles/utils'
 
 export default class BlogPostCard extends React.Component {
   render() {
-    const { title, date, category, author, excerpt } = this.props
+    const { title, date, category, author, excerpt, legnth } = this.props
 
     return (
       <PostWrapper>
@@ -21,9 +21,8 @@ export default class BlogPostCard extends React.Component {
           <Heading.h2 customStyles={customStyles.heading}>{title}</Heading.h2>
         </Link>
         <PostDetails>
-          <Line />
           <Text.span>
-            {date} . By {author}
+            {date} . By {author} . {legnth} min read
           </Text.span>
         </PostDetails>
         <Text.p>{excerpt}</Text.p>
@@ -37,6 +36,11 @@ const customStyles = {
     display: block;
     text-transform: uppercase;
     font-weight: 800;
+
+    &:hover {
+      color: ${({ theme }) => theme.colors.blue};
+      text-decoration: underline;
+    }
 
     ${media.phone`
       font-size: 1.6rem !important;
@@ -61,6 +65,7 @@ const PostDetails = styled.div`
 
   span {
     display: block;
+    color: ${({ theme }) => theme.colors.textDark};
   }
 `
 

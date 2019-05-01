@@ -77,5 +77,5 @@ const customStyles = {
 const Wrapper = styled.div`
   padding-top: 80px;
   padding-bottom: 80px;
-  background-color: ${({ theme }) => theme.colors.bodyBg};
+  background-color: ${({ theme }) => theme.colors.white};
 `

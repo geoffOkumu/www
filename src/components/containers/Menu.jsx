@@ -1,70 +1,56 @@
 import React from 'react'
 import styled from 'styled-components'
 import kebabCase from 'lodash/kebabCase'
+import { Link } from 'gatsby'
 
-import MenuLink from '../widgets/MenuLink'
-import { media } from '../styles/utils'
-import { fadeIn } from '../styles/animations'
+const linksList = ['About', 'Search']
 
-const linksList = ['About', 'Studio', 'Search']
+const Menu = () => {
+  let location = window !== undefined ? window.location.pathname : '/'
 
-const active = (h, location) => new RegExp('/\\b(' + h + ')\\b').test(location)
+  return (
+    <LinksContainer>
+      {linksList.map(link => {
+        let pathname = kebabCase(link)
 
-const Links = ({ location }) => (
-  <React.Fragment>
-    {linksList.map(link => {
-      let pathname = kebabCase(link)
+        return (
+          <li key={link}>
+            <Link
+              state={{ linkedFrom: location }}
+              activeStyle={{ color: '#4484ce' }}
+              to={'/' + pathname}
+            >
+              {link}
+            </Link>
+          </li>
+        )
+      })}
+      <li key="studio">
+        <a href="https://studio.geoffokumu.com">Studio🎨</a>
+      </li>
+    </LinksContainer>
+  )
+}
 
-      return (
-        <MenuLink
-          active={active(pathname, location)}
-          key={link}
-          title={link}
-          to={'/' + pathname}
-        />
-      )
-    })}
-  </React.Fragment>
-)
-
-export const DesktopLinks = ({ location }) => (
-  <DesktopLinksWrapper>
-    <Links location={location} />
-  </DesktopLinksWrapper>
-)
-
-export const Menu = ({ location }) => (
-  <MenuWrapper>
-    {/* <TogglesWrapper>Toggles</TogglesWrapper> */}
-    <LinksWrapper>
-      <Links location={location} />
-    </LinksWrapper>
-  </MenuWrapper>
-)
-
-const MenuWrapper = styled.section`
-  font-family: ${({ theme }) => theme.font.sans};
-  animation: ${fadeIn} 1s;
-  width: 100%;
-`
-
-const TogglesWrapper = styled.div`
-  background-color: ${({ theme }) => theme.colors.grey};
-  padding: 1rem;
-`
-
-const LinksWrapper = styled.div`
-  background-color: ${({ theme }) => theme.colors.white};
-  padding: 1rem;
-  text-align: left;
-  padding-left: 50%;
-
-  ${media.tablet`text-align: right`}
-`
-
-const DesktopLinksWrapper = styled.div`
+const LinksContainer = styled.ul`
   display: flex;
-  font-family: ${({ theme }) => theme.font.sans};
+  list-style: none;
+  float: right;
 
-  ${media.tablet`display: none;`};
+  a {
+    color: #000;
+    text-decoration: none;
+    font-family: ${({ theme }) => theme.font.sans};
+    font-weight: 700;
+
+    &:hover {
+      color: ${({ theme }) => theme.colors.blue};
+    }
+  }
+
+  li {
+    margin-left: 1rem;
+  }
 `
+
+export default Menu

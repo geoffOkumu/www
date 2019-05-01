@@ -1,18 +1,18 @@
 import React from 'react'
-import { graphql } from 'gatsby'
+import { graphql, Link } from 'gatsby'
 import styled from 'styled-components'
 
 import Search from '../components/containers/Search'
 import Layout from '../components/containers/Layout'
-import Header from '../components/containers/Header'
+import { containerStyles } from '../components/widgets/Container'
 
 const SearchPage = ({ location, data }) => {
   const posts = data.posts.edges
+  const source = location.state.linkedFrom
   return (
     <Layout>
       <Wrapper>
-        <div style={{ height: 80 }} />
-        <Header location={location} />
+        <Link to={source}>[Back]</Link>
         <Search posts={posts} />
       </Wrapper>
     </Layout>
@@ -20,7 +20,8 @@ const SearchPage = ({ location, data }) => {
 }
 
 const Wrapper = styled.section`
-  background-color: ${({ theme }) => theme.colors.bodyBg};
+  ${containerStyles};
+  padding-top: 2rem;
   min-height: 80vh;
   padding-bottom: 4rem;
 `

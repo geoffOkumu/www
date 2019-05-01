@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'gatsby'
-import {css} from 'styled-components'
+import { css } from 'styled-components'
 
 import Layout from '../components/containers/Layout'
 import Header from '../components/containers/Header'
@@ -12,26 +12,26 @@ const ErrorPage = ({ location }) => {
     <Layout>
       <Header location={location} />
       <Container customStyles={customStyles.container}>
-          <Heading.h1 customStyles={customStyles.heading}>
-              Page not Found
-          </Heading.h1>
+        <Heading.h1 customStyles={customStyles.heading}>
+          Page not Found
+        </Heading.h1>
       </Container>
     </Layout>
   )
 }
 
 const customStyles = {
-    container: css`
-        text-align: center;
-        height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-wrap: wrap;
-    `,
-    heading: css`
-        display: block;
-    `
+  container: css`
+    text-align: center;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+  `,
+  heading: css`
+    display: block;
+  `,
 }
 
 export default ErrorPage

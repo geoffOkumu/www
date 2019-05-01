@@ -6,6 +6,8 @@ import Layout from '../components/containers/Layout'
 import Header from '../components/containers/Header'
 import Container from '../components/widgets/Container'
 import BlogPostCard from '../components/containers/BlogPostCard'
+import Tagline from '../components/containers/Tagline'
+import QuickTips from '../components/containers/QuickTips'
 
 const IndexPage = ({ location, data }) => {
   const posts = data.blogposts.edges
@@ -13,6 +15,8 @@ const IndexPage = ({ location, data }) => {
   return (
     <Layout>
       <Header />
+      <Tagline />
+      <QuickTips />
       <Wrapper>
         <Container>
           {posts.map(post => (
@@ -23,6 +27,7 @@ const IndexPage = ({ location, data }) => {
               category={post.node.frontmatter.category}
               author={post.node.frontmatter.author}
               excerpt={post.node.excerpt}
+              legnth={post.node.timeToRead}
             />
           ))}
         </Container>
@@ -50,6 +55,7 @@ export const blogPageQuery = graphql`
         node {
           id
           excerpt(pruneLength: 220)
+          timeToRead
           frontmatter {
             title
             date(formatString: "DD MMMM, YYYY")
