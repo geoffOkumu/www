@@ -20,7 +20,7 @@ const CategoryPage = ({ location, data, pathContext }) => {
       />
       <Header location={location.pathname} />
       <Wrapper>
-        <PageTittle>
+        <PageTittle backgroundImg={posts[0].node.frontmatter.featuredImg}>
           <Container>
             <Heading.h1 customStyles={customStyles.heading}>
               # {category}
@@ -62,8 +62,10 @@ const Wrapper = styled.section`
 const PageTittle = styled.div`
   padding: 3rem 0;
   margin-bottom: 4rem;
-  background-color: ${({ theme }) => theme.colors.bodyBg};
-  border-bottom: solid 2px #000;
+  object-fit: cover;
+  color: ${({ theme }) => theme.colors.white};
+  text-shadow: 2px 2px 4px #000000;
+  background-image: url(${props => props.backgroundImg});
 `
 
 export default CategoryPage
@@ -84,6 +86,7 @@ export const categoryPageQuery = graphql`
             date(formatString: "DD MMMM, YYYY")
             category
             author
+            featuredImg
           }
         }
       }

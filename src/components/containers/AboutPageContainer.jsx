@@ -11,7 +11,7 @@ export default class AboutPageContatainer extends Component {
     const { headline, summary, cta } = this.props.data
     return (
       <Wrapper>
-        <Container customStyles={customStyles.container}>
+        <Container maxWidth={1000} customStyles={customStyles.container}>
           <Heading.h1 customStyles={customStyles.heading}>
             {headline}
           </Heading.h1>
@@ -29,7 +29,6 @@ const customStyles = {
     grid-column: 1/3;
     margin-bottom: 30px !important;
     color: ${({ theme }) => theme.colors.textDark};
-    background-color: ${({ theme }) => theme.colors.grey};
 
     ${media.phone`
       grid-column: 1/3;
@@ -42,7 +41,7 @@ const customStyles = {
     grid-template-columns: 1fr 1fr;
   `,
   summary: css`
-    grid-column: 2/3;
+    grid-column: 1/3;
     font-style: oblique;
     font-size: 1.6rem;
     line-height: 1.5;

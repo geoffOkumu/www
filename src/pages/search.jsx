@@ -9,8 +9,6 @@ const SearchPage = ({ location, data }) => {
   const posts = data.posts.edges
   let source
 
-  console.log(location)
-
   if (typeof window !== 'undefined') {
     source = location.state.source
   } else {
