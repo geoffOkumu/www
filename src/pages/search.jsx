@@ -3,8 +3,8 @@ import { graphql, Link } from 'gatsby'
 import styled from 'styled-components'
 
 import Search from '../components/containers/Search'
+import Header from '../components/containers/Header'
 import Layout from '../components/containers/Layout'
-import { containerStyles } from '../components/widgets/Container'
 
 const SearchPage = ({ location, data }) => {
   const posts = data.posts.edges
@@ -20,8 +20,9 @@ const SearchPage = ({ location, data }) => {
 }
 
 const Wrapper = styled.section`
-  ${containerStyles};
-  padding-top: 2rem;
+  text-align: center;
+  background-color: ${({ theme }) => theme.colors.grey};
+  padding-top: 20vh;
   min-height: 80vh;
   padding-bottom: 4rem;
 `

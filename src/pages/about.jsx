@@ -29,7 +29,6 @@ export const aboutPageQuery = graphql`
           frontmatter {
             headline
             summary
-            story
             cta
           }
         }

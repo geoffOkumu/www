@@ -23,7 +23,7 @@ const CategoryPage = ({ location, data, pathContext }) => {
         <PageTittle>
           <Container>
             <Heading.h1 customStyles={customStyles.heading}>
-              All Posts in # {category}
+              # {category}
             </Heading.h1>
           </Container>
         </PageTittle>
@@ -60,7 +60,7 @@ const Wrapper = styled.section`
 `
 
 const PageTittle = styled.div`
-  padding: 6rem 0;
+  padding: 3rem 0;
   margin-bottom: 4rem;
   background-color: ${({ theme }) => theme.colors.bodyBg};
   border-bottom: solid 2px #000;

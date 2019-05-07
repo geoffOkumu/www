@@ -4,37 +4,91 @@ import { Link } from 'gatsby'
 
 import { containerStyles } from '../widgets/Container'
 import { media } from '../styles/utils'
+import LogoMobile from '../../assets/logo-mobile.svg'
 import Logo from '../../assets/Insights.svg'
-import Menu from './Menu'
 
-const Header = () => (
-  <Wrapper>
-    <LogoContainer>
-      <Link to="/">
-        <img src={Logo} alt="geoffokumu insights" />
-      </Link>
-    </LogoContainer>
-    <Menu />
-  </Wrapper>
-)
+const Header = () => {
+  let location = window !== undefined ? window.location.pathname : '/'
 
-const LogoContainer = styled.div`
-  width: 50%;
-  float: left;
+  return (
+    <Wrapper>
+      <LogoContainer>
+        <Link to="/">
+          <img src={Logo} alt="geoffokumu insights" />
+          <LogoResponsive src={LogoMobile} alt="geoffokumu" />
+        </Link>
+      </LogoContainer>
+      <Menu class="menu__links">
+        <MenuLink>
+          <Link
+            activeStyle={{ color: '#4e1fe8' }}
+            state={{ linkedFrom: location }}
+            to="/search"
+          >
+            SEARCH
+          </Link>
+        </MenuLink>
+        <MenuLink>
+          <Link activeStyle={{ color: '#4e1fe8' }} to="/about">
+            ABOUT
+          </Link>
+        </MenuLink>
+        <MenuLink>
+          <a href="https://www.geoffokumu.com">STUDIO</a>
+        </MenuLink>
+      </Menu>
+    </Wrapper>
+  )
+}
 
-  img {
-    width: 100%;
-    display: block;
-    margin-bottom: 2rem;
+const Menu = styled.ul`
+  display: flex;
+  list-style: none;
+`
+
+const MenuLink = styled.li`
+  margin-left: 1rem;
+
+  a {
+    color: ${({ theme }) => theme.colors.textDark};
+    text-decoration: none;
+    font-family: ${({ theme }) => theme.font.sans};
+    font-weight: 700;
+
+    &:hover {
+      color: ${({ theme }) => theme.colors.secondary};
+    }
   }
 `
 
-const Wrapper = styled.header`
+const LogoContainer = styled.figure`
+  display: block;
+  margin: 0;
+
+  img {
+    height: 45px;
+
+    ${media.tablet`
+      display: none;
+    `}
+  }
+`
+
+const LogoResponsive = styled.img`
+  height: 45px;
+  display: none;
+
+  ${media.tablet`
+      display: block !important;
+    `}
+`
+
+const Wrapper = styled.nav`
   ${containerStyles};
-  padding-top: 2rem;
-  height: 120px;
-  max-width: 1300px;
-  border-bottom: 2px solid ${({ theme }) => theme.colors.black};
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100px;
 `
 
 export default Header

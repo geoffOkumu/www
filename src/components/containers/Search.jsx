@@ -110,6 +110,7 @@ const customStyles = {
   container: css`
     text-align: start;
     margin-top: 2rem !important;
+    max-width: 1000px;
   `,
   input: css`
     width: 100%;

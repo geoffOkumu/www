@@ -22,7 +22,7 @@ export default class BlogPostCard extends React.Component {
         </Link>
         <PostDetails>
           <Text.span>
-            {date} . By {author} . {legnth} min read
+            {date} . {legnth} min read
           </Text.span>
         </PostDetails>
         <Text.p>{excerpt}</Text.p>
@@ -38,12 +38,12 @@ const customStyles = {
     font-weight: 800;
 
     &:hover {
-      color: ${({ theme }) => theme.colors.blue};
+      color: ${({ theme }) => theme.colors.secondary};
       text-decoration: underline;
     }
 
     ${media.phone`
-      font-size: 1.6rem !important;
+      font-size: 1.4rem !important;
       `}
   `,
 }
@@ -55,8 +55,11 @@ const PostCategory = styled.span`
   padding: 4px 10px;
   color: #fff;
   font-family: ${({ theme }) => theme.font.sans};
-  font-weight: 700;
   text-transform: uppercase;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.secondary};
+  }
 `
 
 const PostDetails = styled.div`
@@ -69,22 +72,17 @@ const PostDetails = styled.div`
   }
 `
 
-const Line = styled.span`
-  display: block;
-  width: 120px;
-  height: 4px;
-  background: #000;
-  margin-left: -50px;
-  margin-right: 1rem;
-`
-
 const PostWrapper = styled.article`
   ${containerStyles};
   max-width: 70%;
   margin-bottom: 6rem;
 
+  ${media.tablet`
+    max-width: 100%;
+  `}
+
   &:nth-child(1) {
-    margin-top: 4rem;
+    margin-top: 3rem;
   }
 
   a {

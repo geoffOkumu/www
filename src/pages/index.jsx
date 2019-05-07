@@ -16,7 +16,7 @@ const IndexPage = ({ location, data }) => {
     <Layout>
       <Header />
       <Tagline />
-      <QuickTips />
+      {/* <QuickTips /> */}
       <Wrapper>
         <Container>
           {posts.map(post => (
