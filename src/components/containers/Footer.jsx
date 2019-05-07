@@ -15,8 +15,7 @@ const Footer = () => {
 }
 
 const FooterWrapper = styled.footer`
-  border-top: 1px solid ${({ theme }) => theme.colors.textBlack};
-  background-color: ${({ theme }) => theme.colors.bodyBg};
+  background-color: ${({ theme }) => theme.colors.white};
   padding: 1rem 0;
 `
 

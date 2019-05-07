@@ -1,10 +1,11 @@
 export const colors = {
   white: '#fff',
   black: '#000',
-  primary: '#5da8f3',
-  secondary: '#f9cf00',
+  primary: '#ebeb0f',
+  secondary: '#4e1fe8',
   tertiary: '#f19f4d',
   blue: '#4484ce',
+  green: '#10893E',
   grey: '#f4f4f4',
   textDark: '#1e1e1e',
   textLight: '#acbcc2',
@@ -13,7 +14,8 @@ export const colors = {
 }
 
 export const font = {
-  sans: "'Montserrat', 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif'",
+  sans:
+    "'Merriweather Sans', 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif'",
   serif: "'Merriweather', 'Georgia', 'serif'",
   display: "'Playfair Display', serif",
   mono: "'Roboto Mono', Monaco, monospace !default",

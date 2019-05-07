@@ -4,18 +4,20 @@ import styled from 'styled-components'
 
 import Layout from '../components/containers/Layout'
 import Header from '../components/containers/Header'
-import Tagline from '../components/containers/Tagline'
 import Container from '../components/widgets/Container'
 import BlogPostCard from '../components/containers/BlogPostCard'
+import Tagline from '../components/containers/Tagline'
+import QuickTips from '../components/containers/QuickTips'
 
 const IndexPage = ({ location, data }) => {
   const posts = data.blogposts.edges
+
   return (
     <Layout>
-      <Header location={location} />
+      <Header />
+      <Tagline />
+      {/* <QuickTips /> */}
       <Wrapper>
-        <div style={{ height: 80 }} />
-        <Tagline />
         <Container>
           {posts.map(post => (
             <BlogPostCard
@@ -23,6 +25,9 @@ const IndexPage = ({ location, data }) => {
               title={post.node.frontmatter.title}
               date={post.node.frontmatter.date}
               category={post.node.frontmatter.category}
+              author={post.node.frontmatter.author}
+              excerpt={post.node.excerpt}
+              legnth={post.node.timeToRead}
             />
           ))}
         </Container>
@@ -32,8 +37,9 @@ const IndexPage = ({ location, data }) => {
 }
 
 const Wrapper = styled.section`
-  background-color: ${({ theme }) => theme.colors.bodyBg};
+  background-color: ${({ theme }) => theme.colors.white};
   padding-bottom: 4rem;
+  padding-top: 4rem;
 `
 
 export default IndexPage
@@ -48,10 +54,13 @@ export const blogPageQuery = graphql`
       edges {
         node {
           id
+          excerpt(pruneLength: 220)
+          timeToRead
           frontmatter {
             title
             date(formatString: "DD MMMM, YYYY")
             category
+            author
           }
         }
       }

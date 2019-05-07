@@ -42,18 +42,23 @@ export default class BlogPostBody extends Component {
           <meta name="twitter:creator" content="@geoffOkumu" />
         </Helmet>
         <PrismJSTheme />
-        <Container customStyles={customStyles.container}>
-          <ArticleDetails>
+        <ArticleHeading>
+          <Container customStyles={customStyles.postDetails}>
             <Heading.h1 customStyles={customStyles.heading}>{title}</Heading.h1>
+          </Container>
+        </ArticleHeading>
+        <ArticleDetails>
+          <Container customStyles={customStyles.postDetails}>
             <Text.span customStyles={customStyles.text}>{date}</Text.span>
             <Text.span customStyles={customStyles.category}>
               <Link to={`/categories/${kebabCase(category)}`}>{category}</Link>
             </Text.span>
-          </ArticleDetails>
+          </Container>
+        </ArticleDetails>
+        <Container customStyles={customStyles.container}>
           <ArticleContainer>
             <Article dangerouslySetInnerHTML={{ __html: html }} />
           </ArticleContainer>
-          <PostActions>k</PostActions>
         </Container>
       </Wrapper>
     )
@@ -65,70 +70,71 @@ const customStyles = {
     display: flex;
     flex-wrap: wrap;
   `,
+  postDetails: css`
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+  `,
   heading: css`
-    padding-top: 3rem;
+    padding-top: 1.5rem;
+    padding-bottom: 1rem;
     display: block;
     width: 100%;
-    font-size: 3.5rem !important;
+    text-transform: uppercase;
 
     ${media.phone`
-      font-size: 1.8rem !important;
-      padding-top: 2rem;
+      font-size: 1.4rem !important;
     `}
   `,
   text: css`
-    font-size: 1.6rem;
+    font-size: 1.2rem;
+    color: ${({ theme }) => theme.colors.textDark};
 
     ${media.phone`
       font-size: 1rem !important;
-      font-family: ${({ theme }) => theme.font.sans};
-      font-weight: 700;
     `}
   `,
   category: css`
-    font-size: 1.6rem;
+    font-size: 1.2rem;
     padding-left: 2rem;
     text-transform: capitalize;
 
     a {
       text-decoration: none;
-      color: ${({ theme }) => theme.colors.primary};
+      color: ${({ theme }) => theme.colors.secondary};
 
       &::before {
         content: '# ';
+      }
+
+      &:hover {
+        text-decoration: underline;
       }
     }
 
     ${media.phone`
       font-size: 1rem !important;
       padding-left: 1rem;
-      font-family: ${({ theme }) => theme.font.sans};
-      font-weight: 700;
     `}
   `,
 }
 
-const PostActions = styled.div`
-  background-color: ${({ theme }) => theme.colors.white};
-  padding: 1rem;
-  margin-top: 3rem;
-  height: 400px;
-  width: 100%;
-`
-
 const Wrapper = styled.div`
-  padding-top: 80px;
   padding-bottom: 80px;
-  background-color: ${({ theme }) => theme.colors.bodyBg};
+  background-color: ${({ theme }) => theme.colors.white};
   min-height: 100vh;
 `
 
-const ArticleDetails = styled.div`
+const ArticleHeading = styled.div`
   padding-top: 1rem;
   padding-bottom: 1rem;
-  max-width: 1000px;
-  margin-left: auto;
-  margin-right: auto;
+  background-color: ${({ theme }) => theme.colors.grey};
+`
+
+const ArticleDetails = styled.div`
+  padding-top: 0.8rem;
+  padding-bottom: 0.8rem;
+  background-color: ${({ theme }) => theme.colors.primary};
 `
 
 const ArticleContainer = styled.section`
@@ -177,13 +183,13 @@ const Article = styled.article`
 
   pre,
   code {
-    max-width: 960px;
+    max-width: 720px;
     margin-left: auto;
     margin-right: auto;
   }
 
   pre {
-    max-width: 960px;
+    max-width: 720px;
     margin-left: auto;
     margin-right: auto;
     overflow-x: auto;

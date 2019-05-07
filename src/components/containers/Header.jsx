@@ -1,109 +1,94 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'gatsby'
-import CSSPlugin from 'gsap/CSSPlugin'
-import TimelineLite from 'gsap/TimelineLite'
 
 import { containerStyles } from '../widgets/Container'
-import MenuIcon from '../widgets/MenuIcon'
-import { colors } from '../styles/theme'
 import { media } from '../styles/utils'
-import { DesktopLinks, Menu } from './Menu'
+import LogoMobile from '../../assets/logo-mobile.svg'
+import Logo from '../../assets/Insights.svg'
 
-//Prevent CSSPlugin from being removed by tree shaking
-const used = [CSSPlugin]
+const Header = () => {
+  let location = window !== undefined ? window.location.pathname : '/'
 
-class Header extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      menuOpen: false,
-    }
-    this.menuElement = null
-    this.appBarElement = null
-    this.menuAnimation = new TimelineLite({ paused: true })
-  }
-
-  handleClick = () => this.setState({ menuOpen: !this.state.menuOpen })
-
-  componentDidMount() {
-    this.menuAnimation.to(this.menuElement, 0.2, {
-      height: '400px',
-      borderBottom: `8px solid ${colors.secondary}`,
-    })
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    if (prevState.menuOpen !== this.state.menuOpen) {
-      if (this.state.menuOpen === true) {
-        this.menuAnimation.play()
-      } else {
-        this.menuAnimation.reverse()
-      }
-    }
-  }
-
-  render() {
-    const { location } = this.props
-
-    return (
-      <React.Fragment>
-        <Wrapper ref={header => (this.menuElement = header)}>
-          <HeaderContainer ref={section => (this.appBarElement = section)}>
-            <div>
-              <Link to="/">
-                <HeaderLogo>GEOFFOKUMU</HeaderLogo>
-              </Link>
-            </div>
-            <div>
-              <DesktopLinks location={location.pathname} />
-              <MenuButton onClick={this.handleClick}>
-                <MenuIcon active={this.state.menuOpen} />
-              </MenuButton>
-            </div>
-          </HeaderContainer>
-          {this.state.menuOpen && <Menu location={location.pathname} />}
-        </Wrapper>
-      </React.Fragment>
-    )
-  }
+  return (
+    <Wrapper>
+      <LogoContainer>
+        <Link to="/">
+          <img src={Logo} alt="geoffokumu insights" />
+          <LogoResponsive src={LogoMobile} alt="geoffokumu" />
+        </Link>
+      </LogoContainer>
+      <Menu class="menu__links">
+        <MenuLink>
+          <Link
+            activeStyle={{ color: '#4e1fe8' }}
+            state={{ linkedFrom: location }}
+            to="/search"
+          >
+            SEARCH
+          </Link>
+        </MenuLink>
+        <MenuLink>
+          <Link activeStyle={{ color: '#4e1fe8' }} to="/about">
+            ABOUT
+          </Link>
+        </MenuLink>
+        <MenuLink>
+          <a href="https://www.geoffokumu.com">STUDIO</a>
+        </MenuLink>
+      </Menu>
+    </Wrapper>
+  )
 }
 
-const HeaderLogo = styled.h1`
-  font-size: 1.4rem;
-  line-height: 1;
-  font-family: ${({ theme }) => theme.font.sans};
-  color: ${({ theme }) => theme.colors.black};
-  text-decoration: none;
+const Menu = styled.ul`
+  display: flex;
+  list-style: none;
 `
 
-const HeaderContainer = styled.section`
-  ${containerStyles}
-  height: 60px;
+const MenuLink = styled.li`
+  margin-left: 1rem;
+
+  a {
+    color: ${({ theme }) => theme.colors.textDark};
+    text-decoration: none;
+    font-family: ${({ theme }) => theme.font.sans};
+    font-weight: 700;
+
+    &:hover {
+      color: ${({ theme }) => theme.colors.secondary};
+    }
+  }
+`
+
+const LogoContainer = styled.figure`
+  display: block;
+  margin: 0;
+
+  img {
+    height: 45px;
+
+    ${media.tablet`
+      display: none;
+    `}
+  }
+`
+
+const LogoResponsive = styled.img`
+  height: 45px;
+  display: none;
+
+  ${media.tablet`
+      display: block !important;
+    `}
+`
+
+const Wrapper = styled.nav`
+  ${containerStyles};
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 2px solid ${({ theme }) => theme.colors.grey};
-
-  a {
-    text-decoration: none;
-  }
-`
-
-const Wrapper = styled.header`
-  position: fixed;
-  top: 0;
-  z-index: 10;
-  width: 100%;
-  background-color: #fff;
-  height: 60px;
-`
-
-const MenuButton = styled.div`
-  position: relative;
-  display: none;
-
-  ${media.tablet`display: block;`}
+  height: 100px;
 `
 
 export default Header

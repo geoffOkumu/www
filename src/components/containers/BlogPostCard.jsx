@@ -5,35 +5,27 @@ import kebabCase from 'lodash/kebabCase'
 
 import Heading from '../widgets/Heading'
 import Text from '../widgets/Text'
+import { containerStyles } from '../widgets/Container'
 import { media } from '../styles/utils'
 
 export default class BlogPostCard extends React.Component {
   render() {
-    const { title, date, category } = this.props
-
-    let postBackground
-
-    switch (category.toLowerCase()) {
-      case 'performance':
-        postBackground = '#C5E3D7'
-        break
-      case 'react':
-        postBackground = '#e9c893'
-        break
-      default:
-        postBackground = '#C5E3D7'
-        break
-    }
+    const { title, date, category, author, excerpt, legnth } = this.props
 
     return (
-      <PostWrapper background={postBackground}>
+      <PostWrapper>
+        <Link to={`/categories/${kebabCase(category)}`}>
+          <PostCategory>{category}</PostCategory>
+        </Link>
         <Link to={`/${kebabCase(title)}`}>
           <Heading.h2 customStyles={customStyles.heading}>{title}</Heading.h2>
         </Link>
         <PostDetails>
-          <Text.span>{category}</Text.span>
-          <Text.span>{date}</Text.span>
+          <Text.span>
+            {date} . {legnth} min read
+          </Text.span>
         </PostDetails>
+        <Text.p>{excerpt}</Text.p>
       </PostWrapper>
     )
   }
@@ -42,57 +34,59 @@ export default class BlogPostCard extends React.Component {
 const customStyles = {
   heading: css`
     display: block;
-    font-size: 3.5rem !important;
-    padding: 0 4rem;
+    text-transform: uppercase;
+    font-weight: 800;
+
+    &:hover {
+      color: ${({ theme }) => theme.colors.secondary};
+      text-decoration: underline;
+    }
 
     ${media.phone`
-      font-size: 1.6rem !important;
-      padding: 0 1rem;
+      font-size: 1.4rem !important;
       `}
   `,
 }
 
-const PostDetails = styled.div`
-  display: flex;
-  width: 100%;
-  position: absolute;
-  bottom: 0;
-  border-top: solid 1px
-    ${({ theme, isDark }) =>
-      isDark ? theme.colors.grey : theme.colors.textDark};
+const PostCategory = styled.span`
+  margin-bottom: 10px;
+  text-decoration: none;
+  background-color: #000;
+  padding: 4px 10px;
+  color: #fff;
+  font-family: ${({ theme }) => theme.font.sans};
+  text-transform: uppercase;
 
-  span {
-    margin-right: 1rem;
-    padding: 0.6rem 0;
-
-    &:nth-child(1) {
-      padding-left: 1rem;
-      text-transform: capitalize;
-    }
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.secondary};
   }
 `
 
-PostDetails.defaultProps = {
-  isDark: false,
-}
+const PostDetails = styled.div`
+  display: flex;
+  align-items: center;
+
+  span {
+    display: block;
+    color: ${({ theme }) => theme.colors.textDark};
+  }
+`
 
 const PostWrapper = styled.article`
-  margin-bottom: 2rem;
-  background-color: ${props => props.background};
-  height: 500px;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  position: relative;
+  ${containerStyles};
+  max-width: 70%;
+  margin-bottom: 6rem;
+
+  ${media.tablet`
+    max-width: 100%;
+  `}
+
+  &:nth-child(1) {
+    margin-top: 3rem;
+  }
 
   a {
     color: ${({ theme }) => theme.colors.textDark};
     text-decoration: none;
-    display: flex;
-    align-items: center;
-    height: 100%;
-    width: 100%;
   }
-
-  ${media.phone`height: 300px;`}
 `

@@ -8,7 +8,7 @@ import { media } from '../styles/utils'
 
 export default class AboutPageContatainer extends Component {
   render() {
-    const { headline, summary, story, cta } = this.props.data
+    const { headline, summary, cta } = this.props.data
     return (
       <Wrapper>
         <Container customStyles={customStyles.container}>
@@ -16,8 +16,6 @@ export default class AboutPageContatainer extends Component {
             {headline}
           </Heading.h1>
           <Text.p customStyles={customStyles.summary}>{summary}</Text.p>
-          <Heading.h1 customStyles={customStyles.heading}>My Story</Heading.h1>
-          <Text.p customStyles={customStyles.story}>{story}</Text.p>
           <Text.p customStyles={customStyles.cta}>{cta}</Text.p>
         </Container>
       </Wrapper>
@@ -28,9 +26,10 @@ export default class AboutPageContatainer extends Component {
 const customStyles = {
   heading: css`
     font-size: 6rem;
-    grid-column: 2/3;
+    grid-column: 1/3;
     margin-bottom: 30px !important;
     color: ${({ theme }) => theme.colors.textDark};
+    background-color: ${({ theme }) => theme.colors.grey};
 
     ${media.phone`
       grid-column: 1/3;
@@ -75,7 +74,6 @@ const customStyles = {
 }
 
 const Wrapper = styled.div`
-  padding-top: 80px;
   padding-bottom: 80px;
-  background-color: ${({ theme }) => theme.colors.bodyBg};
+  background-color: ${({ theme }) => theme.colors.white};
 `
