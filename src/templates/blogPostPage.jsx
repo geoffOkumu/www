@@ -8,7 +8,7 @@ import BlogPostBody from '../components/containers/BlogPostBody'
 const BlogPostPage = ({ location, data }) => {
   return (
     <Layout>
-      <Header location={location} />
+      <Header location={location.pathname} />
       <BlogPostBody data={data.markdownRemark} />
     </Layout>
   )

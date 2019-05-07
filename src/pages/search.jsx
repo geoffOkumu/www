@@ -3,12 +3,20 @@ import { graphql, Link } from 'gatsby'
 import styled from 'styled-components'
 
 import Search from '../components/containers/Search'
-import Header from '../components/containers/Header'
 import Layout from '../components/containers/Layout'
 
 const SearchPage = ({ location, data }) => {
   const posts = data.posts.edges
-  const source = location.state.linkedFrom
+  let source
+
+  console.log(location)
+
+  if (typeof window !== 'undefined') {
+    source = location.state.source
+  } else {
+    source = '/'
+  }
+
   return (
     <Layout>
       <Wrapper>

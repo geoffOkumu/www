@@ -10,7 +10,7 @@ import Heading from '../components/widgets/Heading'
 const ErrorPage = ({ location }) => {
   return (
     <Layout>
-      <Header location={location} />
+      <Header location={location.pathname} />
       <Container customStyles={customStyles.container}>
         <Heading.h1 customStyles={customStyles.heading}>
           Page not Found

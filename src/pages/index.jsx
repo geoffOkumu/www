@@ -14,7 +14,7 @@ const IndexPage = ({ location, data }) => {
 
   return (
     <Layout>
-      <Header />
+      <Header location={location.pathname} />
       <Tagline />
       {/* <QuickTips /> */}
       <Wrapper>

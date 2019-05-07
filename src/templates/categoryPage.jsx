@@ -18,7 +18,7 @@ const CategoryPage = ({ location, data, pathContext }) => {
       <Helmet
         title={`${category.toUpperCase()} - Software Development Insights by Geoffrey Okumu`}
       />
-      <Header location={location} />
+      <Header location={location.pathname} />
       <Wrapper>
         <PageTittle>
           <Container>

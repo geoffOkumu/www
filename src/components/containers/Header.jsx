@@ -7,39 +7,35 @@ import { media } from '../styles/utils'
 import LogoMobile from '../../assets/logo-mobile.svg'
 import Logo from '../../assets/Insights.svg'
 
-const Header = () => {
-  let location = typeof window !== 'undefined' ? window.location.pathname : '/'
-
-  return (
-    <Wrapper>
-      <LogoContainer>
-        <Link to="/">
-          <img src={Logo} alt="geoffokumu insights" />
-          <LogoResponsive src={LogoMobile} alt="geoffokumu" />
+const Header = ({ location }) => (
+  <Wrapper>
+    <LogoContainer>
+      <Link to="/">
+        <img src={Logo} alt="geoffokumu insights" />
+        <LogoResponsive src={LogoMobile} alt="geoffokumu" />
+      </Link>
+    </LogoContainer>
+    <Menu>
+      <MenuLink>
+        <Link
+          activeStyle={{ color: '#4e1fe8' }}
+          state={{ source: location }}
+          to="/search"
+        >
+          SEARCH
         </Link>
-      </LogoContainer>
-      <Menu class="menu__links">
-        <MenuLink>
-          <Link
-            activeStyle={{ color: '#4e1fe8' }}
-            state={{ linkedFrom: location }}
-            to="/search"
-          >
-            SEARCH
-          </Link>
-        </MenuLink>
-        <MenuLink>
-          <Link activeStyle={{ color: '#4e1fe8' }} to="/about">
-            ABOUT
-          </Link>
-        </MenuLink>
-        <MenuLink>
-          <a href="https://www.geoffokumu.com">STUDIO</a>
-        </MenuLink>
-      </Menu>
-    </Wrapper>
-  )
-}
+      </MenuLink>
+      <MenuLink>
+        <Link activeStyle={{ color: '#4e1fe8' }} to="/about">
+          ABOUT
+        </Link>
+      </MenuLink>
+      <MenuLink>
+        <a href="https://www.geoffokumu.com">STUDIO</a>
+      </MenuLink>
+    </Menu>
+  </Wrapper>
+)
 
 const Menu = styled.ul`
   display: flex;
