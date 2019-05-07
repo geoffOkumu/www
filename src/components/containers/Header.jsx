@@ -8,7 +8,7 @@ import LogoMobile from '../../assets/logo-mobile.svg'
 import Logo from '../../assets/Insights.svg'
 
 const Header = () => {
-  let location = window !== null ? window.location.pathname : '/'
+  let location = typeof window !== 'undefined' ? window.location.pathname : '/'
 
   return (
     <Wrapper>
