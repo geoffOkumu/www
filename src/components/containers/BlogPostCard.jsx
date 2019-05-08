@@ -5,7 +5,7 @@ import kebabCase from 'lodash/kebabCase'
 
 import Heading from '../widgets/Heading'
 import Text from '../widgets/Text'
-import Container from '../widgets/Container'
+import { containerStyles } from '../widgets/Container'
 import { media } from '../styles/utils'
 
 export default class BlogPostCard extends React.Component {
@@ -14,20 +14,18 @@ export default class BlogPostCard extends React.Component {
 
     return (
       <PostWrapper>
-        <Container>
-          <Link to={`/categories/${kebabCase(category)}`}>
-            <PostCategory>{category}</PostCategory>
-          </Link>
-          <Link to={`/${kebabCase(title)}`}>
-            <Heading.h2 customStyles={customStyles.heading}>{title}</Heading.h2>
-          </Link>
-          <PostDetails>
-            <Text.span>
-              {date} . {legnth} min read
-            </Text.span>
-          </PostDetails>
-          <Text.p>{excerpt}</Text.p>
-        </Container>
+        <Link to={`/categories/${kebabCase(category)}`}>
+          <PostCategory>{category}</PostCategory>
+        </Link>
+        <Link to={`/${kebabCase(title)}`}>
+          <Heading.h2 customStyles={customStyles.heading}>{title}</Heading.h2>
+        </Link>
+        <PostDetails>
+          <Text.span>
+            {date} . {legnth} min read
+          </Text.span>
+        </PostDetails>
+        <Text.p>{excerpt}</Text.p>
       </PostWrapper>
     )
   }
@@ -75,7 +73,10 @@ const PostDetails = styled.div`
 `
 
 const PostWrapper = styled.article`
+  ${containerStyles};
   max-width: 70%;
+  margin-left: auto;
+  margin-right: auto;
   margin-bottom: 6rem;
 
   ${media.tablet`
