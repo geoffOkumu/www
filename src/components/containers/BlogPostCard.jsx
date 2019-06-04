@@ -75,8 +75,6 @@ const PostDetails = styled.div`
 const PostWrapper = styled.article`
   ${containerStyles};
   max-width: 70%;
-  margin-left: auto;
-  margin-right: auto;
   margin-bottom: 6rem;
 
   ${media.tablet`

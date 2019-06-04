@@ -27,7 +27,8 @@ const customStyles = {
   heading: css`
     font-size: 6rem;
     grid-column: 1/3;
-    margin-bottom: 30px !important;
+    margin-bottom: 0 !important;
+    line-height: 1;
     color: ${({ theme }) => theme.colors.textDark};
 
     ${media.phone`

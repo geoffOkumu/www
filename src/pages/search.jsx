@@ -7,6 +7,7 @@ import Layout from '../components/containers/Layout'
 
 const SearchPage = ({ location, data }) => {
   const posts = data.posts.edges
+
   let source
 
   if (typeof window !== 'undefined') {

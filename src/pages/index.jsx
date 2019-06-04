@@ -8,6 +8,7 @@ import Container from '../components/widgets/Container'
 import BlogPostCard from '../components/containers/BlogPostCard'
 import Tagline from '../components/containers/Tagline'
 import QuickTips from '../components/containers/QuickTips'
+import FormContainer from '../components/containers/FormContainer'
 
 const IndexPage = ({ location, data }) => {
   const posts = data.blogposts.edges
@@ -18,27 +19,27 @@ const IndexPage = ({ location, data }) => {
       <Tagline />
       {/* <QuickTips /> */}
       <Wrapper>
-        <Container>
-          {posts.map(post => (
-            <BlogPostCard
-              key={post.node.frontmatter.title}
-              title={post.node.frontmatter.title}
-              date={post.node.frontmatter.date}
-              category={post.node.frontmatter.category}
-              author={post.node.frontmatter.author}
-              excerpt={post.node.excerpt}
-              legnth={post.node.timeToRead}
-            />
-          ))}
-        </Container>
+        {posts.map(post => (
+          <BlogPostCard
+            key={post.node.frontmatter.title}
+            title={post.node.frontmatter.title}
+            date={post.node.frontmatter.date}
+            category={post.node.frontmatter.category}
+            author={post.node.frontmatter.author}
+            excerpt={post.node.excerpt}
+            legnth={post.node.timeToRead}
+          />
+        ))}
       </Wrapper>
+      <Container>
+        <FormContainer />
+      </Container>
     </Layout>
   )
 }
 
 const Wrapper = styled.section`
   background-color: ${({ theme }) => theme.colors.white};
-  padding-bottom: 4rem;
   padding-top: 4rem;
 `
 

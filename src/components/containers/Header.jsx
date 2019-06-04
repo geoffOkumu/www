@@ -6,6 +6,7 @@ import { containerStyles } from '../widgets/Container'
 import { media } from '../styles/utils'
 import LogoMobile from '../../assets/logo-mobile.svg'
 import Logo from '../../assets/Insights.svg'
+import External from '../svg/external'
 
 const Header = ({ location }) => (
   <Wrapper>
@@ -26,12 +27,10 @@ const Header = ({ location }) => (
         </Link>
       </MenuLink>
       <MenuLink>
-        <Link activeStyle={{ color: '#4e1fe8' }} to="/about">
-          ABOUT
-        </Link>
-      </MenuLink>
-      <MenuLink>
-        <a href="https://www.geoffokumu.com">STUDIO</a>
+        <a href="https://www.geoffokumu.com">
+          STUDIO
+          <External />{' '}
+        </a>
       </MenuLink>
     </Menu>
   </Wrapper>
@@ -52,7 +51,7 @@ const MenuLink = styled.li`
     font-weight: 700;
 
     &:hover {
-      color: ${({ theme }) => theme.colors.secondary};
+      color: ${({ theme }) => theme.colors.blue};
     }
   }
 `

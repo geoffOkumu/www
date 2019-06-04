@@ -20,7 +20,7 @@ const CategoryPage = ({ location, data, pathContext }) => {
       />
       <Header location={location.pathname} />
       <Wrapper>
-        <PageTittle backgroundImg={posts[0].node.frontmatter.featuredImg}>
+        <PageTittle>
           <Container>
             <Heading.h1 customStyles={customStyles.heading}>
               # {category}
@@ -63,9 +63,8 @@ const PageTittle = styled.div`
   padding: 3rem 0;
   margin-bottom: 4rem;
   object-fit: cover;
-  color: ${({ theme }) => theme.colors.white};
-  text-shadow: 2px 2px 4px #000000;
-  background-image: url(${props => props.backgroundImg});
+  color: ${({ theme }) => theme.colors.textDark};
+  background-color: ${({ theme }) => theme.colors.primary};
 `
 
 export default CategoryPage
