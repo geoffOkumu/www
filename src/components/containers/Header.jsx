@@ -12,7 +12,6 @@ const Header = ({ location }) => (
   <Wrapper>
     <LogoContainer>
       <Link to="/">
-        <img src={Logo} alt="geoffokumu insights" />
         <LogoResponsive src={LogoMobile} alt="geoffokumu" />
       </Link>
     </LogoContainer>
@@ -71,7 +70,7 @@ const LogoContainer = styled.figure`
 
 const LogoResponsive = styled.img`
   height: 45px;
-  display: none;
+  display: block;
 
   ${media.tablet`
       display: block !important;
